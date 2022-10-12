@@ -17,4 +17,5 @@ $ yarn add
 # Run
 Work In Progress
 
-Git Lecture Workshop
+
+James was here!
