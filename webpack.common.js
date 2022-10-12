@@ -8,6 +8,7 @@ const isProduction = process.env.NODE_ENV === 'PRODUCTION';
 module.exports = {
   entry: path.join(__dirname, 'client/src/index.jsx'),
   output: {
+    publicPath: '/',
     path: path.join(__dirname, 'client/dist'),
     filename: 'bundle.[hash].js',
   },
