@@ -4,11 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "dev-server": "NODE_ENV=DEVELOPMENT webpack-dev-server --config webpack.dev.js",
+    "dev": "NODE_ENV=DEVELOPMENT webpack --config webpack.dev.js",
+    "build": "NODE_ENV=PRODUCTION webpack --config webpack.prod.js",
+    "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kee Wook Lee, James Flaws, Robert Garcia",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.1.2",
@@ -29,6 +31,7 @@
     "babel-jest": "^29.1.2",
     "babel-loader": "^8.2.5",
     "babel-plugin-styled-components": "^2.0.7",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -41,12 +44,15 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.1.2",
     "live-server": "^1.2.2",
+    "node-sass": "^7.0.3",
     "nodemon": "^2.0.20",
     "react-refresh": "^0.14.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   }
 }
