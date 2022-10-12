@@ -8,5 +8,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    quotes: ['error', 'single', 'avoid-escape'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+  },
 };
