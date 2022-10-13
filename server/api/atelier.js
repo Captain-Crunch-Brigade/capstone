@@ -72,10 +72,23 @@ const getThumbnailImages = async (id) => {
   }
 };
 
+const getQuestions = async (id) => {
+  try {
+    const results = await axios.get(`${baseURL}/qa/questionss`, authHeader);
+    return results.data;
+  } catch (err) {
+    if (err) {
+      throw new Error(err);
+    }
+    return false;
+  }
+};
+
 module.exports = {
   getProducts,
   getProduct,
   getRelatedProducts,
   getStarsById,
   getThumbnailImages,
+  getQuestions,
 };
