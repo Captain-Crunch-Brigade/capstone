@@ -6,7 +6,7 @@ const RelatedProducts = function RelatedItems() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/products')
+    axios.get('/api/related_items/65631')
       .then((results) => {
         setData(results.data);
       });
