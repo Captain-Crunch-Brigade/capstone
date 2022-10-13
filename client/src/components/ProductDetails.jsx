@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header';
+import RelatedItemsAndComparison from './RelatedItemsAndComparison';
 
 const ProductDetails = function ProductDetails() {
   return (
     <div>
-      < Header />
+      <RelatedItemsAndComparison />
     </div>
   );
 };
