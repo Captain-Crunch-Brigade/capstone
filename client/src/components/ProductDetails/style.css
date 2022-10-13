@@ -1,0 +1,14 @@
+#header {
+  background: #4185f3;
+  border: 1px solid #004a90;
+  color: #fff;
+}
+
+#logo {
+  margin: 20px;
+  display: inline-block;
+}
+
+#search {
+  margin-left: 55vw;
+}
