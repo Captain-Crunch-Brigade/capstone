@@ -1,7 +1,12 @@
 import React from 'react';
+import RelatedItemsAndComparison from './RelatedItemsAndComparison';
 
 const ProductDetails = function ProductDetails() {
-  return (<div>Product Detail Page</div>);
+  return (
+    <div>
+      <RelatedItemsAndComparison />
+    </div>
+  );
 };
 
 export default ProductDetails;
