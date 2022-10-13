@@ -20,6 +20,7 @@ const getProducts = async () => {
     if (err) {
       console.error(err);
     }
+    return false;
   }
 };
 
@@ -31,6 +32,7 @@ const getProduct = async (id) => {
     if (err) {
       console.error(err);
     }
+    return false;
   }
 };
 
@@ -42,6 +44,7 @@ const getRelatedProducts = async (id) => {
     if (err) {
       console.error(err);
     }
+    return false;
   }
 };
 
@@ -53,6 +56,7 @@ const getStarsById = async (id) => {
     if (err) {
       console.error(err);
     }
+    return false;
   }
 };
 
@@ -62,8 +66,9 @@ const getThumbnailImages = async (id) => {
     return results.data;
   } catch (err) {
     if (err) {
-      console.error(err);
+      throw new Error(err);
     }
+    return false;
   }
 };
 

@@ -11,6 +11,5 @@ module.exports = {
   rules: {
     quotes: ['error', 'single', 'avoid-escape'],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'consistent-return': 'off',
   },
 };
