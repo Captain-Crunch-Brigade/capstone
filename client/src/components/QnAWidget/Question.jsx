@@ -1,16 +1,15 @@
 import React from 'react';
-import AnswerList from './AnswerList.jsx';
-const Question = function(props) {
+import AnswerList from './AnswerList';
 
-
-  return(
+const Question = function ({props}) {
+  return (
     <div>
       <div>Q: Question here</div>
       <div> by NickName at Date</div>
       <AnswerList aList={props.question.answers}/>
-      <button>helpfull</button>
-      <button>report</button>
+      <button type="button">helpfull</button>
+      <button type="button">report</button>
     </div>
-  )
-}
+  );
+};
 export default Question;

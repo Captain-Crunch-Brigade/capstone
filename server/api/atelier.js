@@ -74,7 +74,7 @@ const getThumbnailImages = async (id) => {
 
 const getQuestions = async (id) => {
   try {
-    const results = await axios.get(`${baseURL}/qa/questionss`, authHeader);
+    const results = await axios.get(`${baseURL}/qa/questions?product_id=${id}`, authHeader);
     return results.data;
   } catch (err) {
     if (err) {

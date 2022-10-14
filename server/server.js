@@ -42,9 +42,7 @@ app.get('/api/qa/questions/:id', async (req, res) => {
       if (err) {
         res.status(404).send('Not Found');
       }
-    })
-
-  res.json(results.data);
+    });
 });
 
 app.listen(3000);

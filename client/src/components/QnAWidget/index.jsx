@@ -1,20 +1,20 @@
 import React from 'react';
 import axios from 'axios';
-import TopBar from './TopBar.jsx';
-import QuestionList from './QuestionList.jsx';
+import TopBar from './TopBar';
+import QuestionList from './QuestionList';
 import BottomBar from './BottomBar';
-const QnAWidget = function(props) {
-  const [QList, setQlist] = React.useState([])
-  //axios call here
 
+const QnAWidget = function (props) {
+  const [QList, setQlist] = React.useState([]);
+  //  axios call here
 
-  return(
+  return (
     <div>
-      <TopBar/>
-      <QuestionList list={Qlist}/>
-      <BottomBar/>
+      <TopBar />
+      <QuestionList list={QList} />
+      <BottomBar />
     </div>
-  )
-}
+  );
+};
 
 export default QnAWidget;
