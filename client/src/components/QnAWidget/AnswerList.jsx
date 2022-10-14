@@ -1,11 +1,25 @@
 import React from 'react';
 import Answer from './Answer';
 
-const AnswerList = function (props) {
+const AnswerList = function ({aList}) {
   const [answerList, setAnswerList] = React.useState([]);
   React.useEffect(() => {
-    //  test props.alist for length if > 2 setstate to just the first 2 items
-  }, []);
+    let listArr = [];
+    for (let i in aList){
+      listArr.push(aList[i]);
+    }
+    console.log('alist: ', aList);
+    console.log('listArr: ', listArr);
+    if (listArr.length > 2) {
+      setAnswerList([listArr[0], listArr[1]]);
+    // setRenderList(list.slice(0, 2));
+     // setRenderList(list);
+    } else if (listArr.length > 0) {
+      setAnswerList(listArr);
+    } else {
+      setAnswerList([]);
+    }
+  }, aList);
   return (
     <div>
       {answerList.map((item) => (
