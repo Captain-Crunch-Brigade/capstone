@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
-app.get('/api/related_items/:id', async (req, res) => {
+app.get('/api/related_items/:id/info', async (req, res) => {
   const { id } = req.params;
 
   Promise.all([
@@ -31,6 +31,19 @@ app.get('/api/related_items/:id', async (req, res) => {
   });
 });
 
+app.get('/api/related_items/:id', async (req, res) => {
+  const { id } = req.params;
+
+  atelierAPI.getRelatedProducts(id)
+    .then((results) => {
+      res.status(200).json(results);
+    }).catch((err) => {
+      if (err) {
+        res.status(404).send('Not Found');
+      }
+    });
+});
+
 app.get('/api/qa/questions/:id', async (req, res) => {
   const { id } = req.params;
   // req.headers.Authorization = process.env.API_KEY;
@@ -44,6 +57,7 @@ app.get('/api/qa/questions/:id', async (req, res) => {
       }
     });
 });
+
 
 app.listen(3000);
 console.log('Server listening at http://localhost:3000');
