@@ -2,6 +2,7 @@
   background: #4185f3;
   border: 1px solid #004a90;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 #logo {
@@ -10,5 +11,39 @@
 }
 
 #search {
-  margin-left: 55vw;
+  float: right;
+  margin: 25px 20px 0 0;
+}
+
+#search input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+#search button {
+  background-color: transparent;
+  border: none;
+}
+
+#gallery,
+#info,
+#selector,
+#cart {
+  border: 1px solid #000;
+}
+
+#gallery {
+  width: 60vw;
+  margin-right: 4vw;
+}
+
+.main,
+.aside {
+  display: flex;
+}
+
+.aside {
+  flex-direction: column;
+  width: 35vw;
 }
