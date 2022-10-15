@@ -1,36 +1,53 @@
 import React from 'react';
-import Question from './Question.jsx';
 import PropTypes from 'prop-types';
-const QuestionList = function ({ list }) {
+import Question from './Question';
+
+const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
+  const [listLength, setListLength] = React.useState(2)
   React.useEffect(() => {
-    console.log('propls.list: ', list);
-    if (list.length > 2) {
-     setRenderList([list[0], list[1]]);
-    // setRenderList(list.slice(0, 2));
-     // setRenderList(list);
+    if (list.length > listLength) {
+      let i = 0;
+      const setArr = [];
+      if (search.length >= 3) {
+        while (i < list.length && setArr.length < listLength) {
+          if(list[i].question_body.includes(search) || list[i].asker_name.includes(search)) {
+            setArr.push(list[i]);
+          }
+          i += 1;
+        }
+        setRenderList(setArr)
+      } else {
+        for (let j = 0; j < list.length; j++) {
+          if (setArr.length < listLength) {
+            setArr.push(list[j])
+          }
+        }
+        setRenderList(setArr);
+      }
+
     } else if (list.length > 0) {
       setRenderList(list);
     } else {
       setRenderList([]);
     }
-  }, list);
+  }, [list, search]);
   return (
     <div>
       {renderList.map((item) => (
         <Question question={item} />
       ))}
-
       <button type="button"> if more questiosn button </button>
     </div>
   )
-
-}
+};
 
 QuestionList.propTypes = {
   list: PropTypes.Array,
+  search: PropTypes.String,
 };
 QuestionList.defaultProps = {
   list : [],
+  search: '',
 };
 export default QuestionList;

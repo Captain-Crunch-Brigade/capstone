@@ -6,6 +6,7 @@ import BottomBar from './BottomBar';
 
 const QnAWidget = function (props) {
   const [QList, setQlist] = useState([{}]);
+  const [search, setSearch] = useState('');
   useEffect(() => {
     axios.get('/api/qa/questions/40343')
       .then((data) =>{
@@ -16,10 +17,13 @@ const QnAWidget = function (props) {
         console.log('error in qna axios call: ', err);
       })
   }, []);
+  useEffect(() => {
+
+  }, [search]);
   return (
     <div>
-      <TopBar />
-      <QuestionList list={QList} />
+      <TopBar setSearch={setSearch}/>
+      <QuestionList list={QList} search={search}/>
       <BottomBar />
     </div>
   );

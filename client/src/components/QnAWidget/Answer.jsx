@@ -8,7 +8,7 @@ const Answer = function ({ answer }) {
         {answer.body}
       </div>
       <div>by {answer.answerer_name} at {answer.date}</div>
-      <button type="button">helpfull</button>
+      <button type="button">helpfull{answer.helpfulness}</button>
       <button type="button">report</button>
     </div>
   );

@@ -8,8 +8,6 @@ const AnswerList = function ({aList}) {
     for (let i in aList){
       listArr.push(aList[i]);
     }
-    console.log('alist: ', aList);
-    console.log('listArr: ', listArr);
     if (listArr.length > 2) {
       setAnswerList([listArr[0], listArr[1]]);
     // setRenderList(list.slice(0, 2));
