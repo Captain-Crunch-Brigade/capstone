@@ -8,12 +8,24 @@ import s from './style.css';
 import axios from 'axios';
 
 const ProductOverview = () => {
-  // const [gallery, setGallery = useState({})
-  const id = 65631;
+  const [gallery, setGallery] = useState({
+    results: [
+      {
+        photos: [{}]
+      }
+    ]
+  });
+  const [productInfo, setProductInfo] = useState({});
+  // const id = 65652;
+  const id = Math.floor((Math.random() * 1010) + 65631)
   useEffect(() => {
-    axios.get(`/api/styles/${id}`)
+    axios.get(`http://localhost:3000/api/styles/${id}`)
       .then(results => {
-        console.log(results)
+        let info = results.data[0];
+        let style = results.data[2];
+
+        setGallery(style);
+        setProductInfo(info);
       })
   }, [])
 
@@ -21,13 +33,13 @@ const ProductOverview = () => {
     <>
       <Header />
       <div className={s.main}>
-        <ImageGallery />
+        <ImageGallery data={gallery} />
         <div className={s.aside}>
-          <ProductInfo />
+          <ProductInfo data={productInfo} />
           <StyleSelector />
           <AddToCart />
         </div>
-      </div >
+      </div>
     </>
   );
 };

@@ -26,18 +26,11 @@
   border: none;
 }
 
-#gallery,
-#info,
-#selector,
-#cart {
-  border: 1px solid #000;
-}
-
 #gallery {
   width: 60vw;
-  margin-right: 4vw;
+  height: 60vw;
+  margin-right: 2vw;
 }
-
 
 .main,
 .aside {
@@ -47,4 +40,12 @@
 .aside {
   flex-direction: column;
   width: 35vw;
+}
+
+#info h2 {
+  margin: 0;
+}
+
+#info p {
+  margin: 10px 0 0 0;
 }
