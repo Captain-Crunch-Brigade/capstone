@@ -47,7 +47,6 @@ const Button = styled.button`
 
 const LeftButton = styled(Button)`
   left: 0;
-  display: ${(props) => (props.ref === 0 ? 'none' : 'block')}
 `;
 
 const RightButton = styled(Button)`
