@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
   background-color: #bcbcbc;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
