@@ -10,7 +10,6 @@ const QnAWidget = function (props) {
   useEffect(() => {
     axios.get('/api/qa/questions/40343')
       .then((data) =>{
-        console.log('data.data.results: ', data.data.results);
         setQlist(data.data.results);
       })
       .catch((err) => {

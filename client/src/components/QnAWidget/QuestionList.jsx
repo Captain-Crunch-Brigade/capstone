@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Question from './Question';
+import MoreQuestions from './MoreQuestions';
 
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
@@ -31,23 +32,23 @@ const QuestionList = function ({ list, search }) {
     } else {
       setRenderList([]);
     }
-  }, [list, search]);
+  }, [list, search, listLength]);
   return (
     <div>
       {renderList.map((item) => (
         <Question question={item} />
       ))}
-      <button type="button"> if more questiosn button </button>
+      <MoreQuestions qList={list} count={listLength} setCount={setListLength}/>
     </div>
   )
 };
 
-QuestionList.propTypes = {
-  list: PropTypes.Array,
-  search: PropTypes.String,
-};
-QuestionList.defaultProps = {
-  list : [],
-  search: '',
-};
+// QuestionList.propTypes = {
+//   list: PropTypes.Array,
+//   search: PropTypes.String,
+// };
+// QuestionList.defaultProps = {
+//   list : [],
+//   search: '',
+// };
 export default QuestionList;
