@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -40,6 +41,7 @@ const Card = function Card({ id }) {
     ratings: null,
     thumbnails: [],
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`/api/related_items/${id}/info`)
@@ -55,8 +57,13 @@ const Card = function Card({ id }) {
       });
   }, [id]);
 
+  const navigateToProductId = () => {
+    navigate(`/products/${id}`);
+    navigate(0);
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={navigateToProductId}>
       <Image src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
