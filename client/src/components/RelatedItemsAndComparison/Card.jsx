@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
 
 const Wrapper = styled.div`
   width: 300px;
@@ -29,12 +30,16 @@ const Price = styled.div`
   font-size: 10px;
 `;
 
+const Stars = styled.div`
+  font-size: 10px;
+`;
+
 const Card = function Card({ id }) {
   const [data, setData] = useState({
     name: '',
     category: '',
     price: 0,
-    ratings: {},
+    ratings: null,
     thumbnails: [],
   });
 
@@ -46,7 +51,7 @@ const Card = function Card({ id }) {
           name: results.data[0].name,
           category: results.data[0].category,
           price: parseInt(results.data[0].default_price, 10),
-          ratings: results.data[2],
+          ratings: getStarsByQuarter(getAverageStars(results.data[2]), 10),
           thumbnails: results.data[3].results,
         }));
       });
@@ -58,6 +63,8 @@ const Card = function Card({ id }) {
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
       <Price>{`$${data.price}`}</Price>
+      {/* TODO: Add star components given data.ratings */}
+      <Stars>{data.ratings}</Stars>
     </Wrapper>
   );
 };
