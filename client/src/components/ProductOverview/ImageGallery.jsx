@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './style.css';
+import axios from 'axios'
 
 const ImageGallery = () => {
 
