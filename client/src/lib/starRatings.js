@@ -3,7 +3,7 @@ export const getAverageStars = (obj) => {
   const totalSum = (1 * parseInt(obj['1'], 10) + 2 * parseInt(obj['2'], 10) + 3 * parseInt(obj['3'], 10) + 4 * parseInt(obj['4'], 10) + 5 * parseInt(obj['5'], 10));
   const totalNum = parseInt(obj['1'], 10) + parseInt(obj['2'], 10) + parseInt(obj['3'], 10) + parseInt(obj['4'], 10) + parseInt(obj['5'], 10);
 
-  return totalSum / totalNum;
+  return (totalSum / totalNum).toFixed(2);
 };
 
 // Input: num -> average star ratings (0 <= num <= 5)
