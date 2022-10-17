@@ -84,6 +84,26 @@ const getQuestions = async (id) => {
   }
 };
 
+const postQuestion = async (text, qname, qemail, id) => {
+  const inputs = {
+    headers: {
+      Authorization: process.env.API_KEY,
+      body: text,
+      name: qname,
+      email: qemail,
+      product_id: id
+    }
+  }
+  try{
+    const results = await axios.post('/qa/questions', inputs)
+  } catch (err) {
+    if (err) {
+      throw new Error(err);
+    }
+    return false;
+  }
+
+}
 module.exports = {
   getProducts,
   getProduct,
