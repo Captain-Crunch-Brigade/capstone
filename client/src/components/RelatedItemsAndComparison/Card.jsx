@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
+import Stars from '../Stars';
 
 const Wrapper = styled.div`
   width: 300px;
   height: 400px;
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
+  background-color: #bcbcbc;
 `;
 
 const Image = styled.img`
@@ -27,10 +29,6 @@ const Name = styled.div`
 `;
 
 const Price = styled.div`
-  font-size: 10px;
-`;
-
-const Stars = styled.div`
   font-size: 10px;
 `;
 
@@ -63,8 +61,7 @@ const Card = function Card({ id }) {
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
       <Price>{`$${data.price}`}</Price>
-      {/* TODO: Add star components given data.ratings */}
-      <Stars>{data.ratings}</Stars>
+      <Stars ratings={data.ratings} />
     </Wrapper>
   );
 };
