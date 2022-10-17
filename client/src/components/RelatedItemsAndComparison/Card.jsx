@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
+import Stars from '../Stars';
 
 const Wrapper = styled.div`
   width: 300px;
   height: 400px;
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
+  background-color: #bcbcbc;
 `;
 
 const Image = styled.img`
@@ -34,7 +37,7 @@ const Card = function Card({ id }) {
     name: '',
     category: '',
     price: 0,
-    ratings: {},
+    ratings: null,
     thumbnails: [],
   });
 
@@ -46,7 +49,7 @@ const Card = function Card({ id }) {
           name: results.data[0].name,
           category: results.data[0].category,
           price: parseInt(results.data[0].default_price, 10),
-          ratings: results.data[2],
+          ratings: getStarsByQuarter(getAverageStars(results.data[2]), 10),
           thumbnails: results.data[3].results,
         }));
       });
@@ -58,6 +61,7 @@ const Card = function Card({ id }) {
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
       <Price>{`$${data.price}`}</Price>
+      <Stars ratings={data.ratings} />
     </Wrapper>
   );
 };
