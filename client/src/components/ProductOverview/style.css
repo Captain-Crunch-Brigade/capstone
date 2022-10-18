@@ -49,3 +49,8 @@
 #info p {
   margin: 10px 0 0 0;
 }
+
+#thumbnails h3 {
+  background-color: grey;
+  width: fit-content;
+}

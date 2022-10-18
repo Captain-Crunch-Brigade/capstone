@@ -1,16 +1,18 @@
 import React from 'react';
+import Thumbnails from './Thumbnails'
 import s from './style.css';
 import axios from 'axios'
 
-const ImageGallery = ({ data }) => {
+const ImageGallery = ({ styleInfo }) => {
   const bgImg = {
-    backgroundImage: `url(${data.results[0].photos[0].url})`,
+    backgroundImage: `url(${styleInfo.imgUrl})`,
     backgroundSize: '100% 100%'
   }
   return (
     <div id={s.gallery} style={bgImg}>
-
-
+      <div id={s.thumbnails}>
+        <Thumbnails />
+      </div>
     </div>
   )
 }
