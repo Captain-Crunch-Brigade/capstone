@@ -63,7 +63,6 @@ app.get('/api/styles/:id', async (req, res) => {
 });
 app.get('/api/qa/questions/:id', async (req, res) => {
   const { id } = req.params;
-  // req.headers.Authorization = process.env.API_KEY;
   atelierAPI.getQuestions(id)
     .then((results) => {
       res.status(200).json(results);
@@ -74,5 +73,9 @@ app.get('/api/qa/questions/:id', async (req, res) => {
       }
     });
 });
+app.post('/api/qa/questions', async (req, res) => {
+  console.log('post request', req.body);
+});
+
 app.listen(3000);
 console.log('Server listening at http://localhost:3000');

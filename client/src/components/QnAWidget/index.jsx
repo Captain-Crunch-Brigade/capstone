@@ -4,7 +4,7 @@ import TopBar from './TopBar';
 import QuestionList from './QuestionList';
 import BottomBar from './BottomBar';
 
-const QnAWidget = function (props) {
+const QnAWidget = function ({id}) {
   const [QList, setQlist] = useState([{}]);
   const [search, setSearch] = useState('');
   useEffect(() => {
@@ -23,7 +23,7 @@ const QnAWidget = function (props) {
     <div>
       <TopBar setSearch={setSearch}/>
       <QuestionList list={QList} search={search}/>
-      <BottomBar />
+      <BottomBar productid={40343}/>
     </div>
   );
 };
