@@ -61,19 +61,19 @@ const Carousel = function Carousel({ relatedItems }) {
   const handlePrev = () => {
     const isFirstSlide = currentSlide === 0;
     const newIndex = isFirstSlide ? 0 : currentSlide - 1;
-    if (!isFirstSlide) {
-      slideRef.current.scrollLeft -= slideRef.current.offsedWidth / 4;
-    }
     setCurrentSlide(newIndex);
+    if (!isFirstSlide) {
+      slideRef.current.scrollLeft -= slideRef.current.offsetWidth / 4;
+    }
   };
 
   const handleNext = () => {
     const isLastSlide = currentSlide >= totalSlides;
     const newIndex = isLastSlide ? totalSlides : currentSlide + 1;
+    setCurrentSlide(newIndex);
     if (!isLastSlide) {
       slideRef.current.scrollLeft += slideRef.current.offsetWidth / 4;
     }
-    setCurrentSlide(newIndex);
   };
 
   return (
