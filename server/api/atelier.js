@@ -74,7 +74,7 @@ const getThumbnailImages = async (id) => {
 
 const getQuestions = async (id) => {
   try {
-    const results = await axios.get(`${baseURL}/qa/questions?product_id=${id}`, authHeader);
+    const results = await axios.get(`${baseURL}/qa/questions?product_id=${id}&page=1&count=200`, authHeader);
     return results.data;
   } catch (err) {
     if (err) {
@@ -84,20 +84,20 @@ const getQuestions = async (id) => {
   }
 };
 
-const postQuestion = async (text, qname, qemail, id) => {
-  const inputs = {
-    body: text,
-    name: qname,
-    email: qemail,
-    product_id: id
-  };
+const postQuestion = async (obj) => {
+  // const inputs = {
+  //   body: text,
+  //   name: qname,
+  //   email: qemail,
+  //   product_id: id
+  // };
+  console.log('obj passed to postQuestion: ', obj);
   try {
-    const results = await axios.post('/qa/questions', inputs)
+    const results = await axios.post(`${baseURL}/qa/questions`, obj, authHeader)
+    return results;
   } catch (err) {
-    if (err) {
-      throw new Error(err);
-    }
-    return false;
+    console.log('error in api call:', err);
+    throw new Error(err);
   }
 }
 module.exports = {

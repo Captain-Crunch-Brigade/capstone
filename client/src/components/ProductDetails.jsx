@@ -8,7 +8,7 @@ const ProductDetails = function ProductDetails() {
     <div>
       <ProductOverview />
       <RelatedItemsAndComparison />
-      <QnAWidget />
+      <QnAWidget id={65631}/>
     </div>
   );
 };

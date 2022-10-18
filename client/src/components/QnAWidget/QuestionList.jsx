@@ -26,7 +26,6 @@ const QuestionList = function ({ list, search }) {
         }
         setRenderList(setArr);
       }
-
     } else if (list.length > 0) {
       setRenderList(list);
     } else {

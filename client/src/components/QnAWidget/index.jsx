@@ -8,7 +8,7 @@ const QnAWidget = function ({id}) {
   const [QList, setQlist] = useState([{}]);
   const [search, setSearch] = useState('');
   useEffect(() => {
-    axios.get('/api/qa/questions/40343')
+    axios.get(`/api/qa/questions/${id}`)
       .then((data) =>{
         setQlist(data.data.results);
       })
@@ -23,7 +23,7 @@ const QnAWidget = function ({id}) {
     <div>
       <TopBar setSearch={setSearch}/>
       <QuestionList list={QList} search={search}/>
-      <BottomBar productid={40343}/>
+      <BottomBar productid={id}/>
     </div>
   );
 };

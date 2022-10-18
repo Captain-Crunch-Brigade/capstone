@@ -1,9 +1,14 @@
 import React from 'react';
 import AnswerList from './AnswerList';
-
-const Question = function (props) {
+import AnswerForm from './AnswerForm'
+const Question = function ({question}) {
   const [helpfull, setHelpfull] = React.useState(false);
   const [reported, setReported] = React.useState(false);
+  const [isClicked, setIsClicked] = React.useState(false);
+  const clickHandler = (event) => {
+    event.preventDefault();
+    setIsClicked(true);
+  }
   const helphandler = (event) => {
     event.preventDefault();
     if (!helpfull) {
@@ -24,13 +29,15 @@ const Question = function (props) {
     <div>
       <div>
         Q:
-        {props.question.question_body}
+        {question.question_body}
       <button type="button" onClick={(e) => { helphandler(e)}}>helpfull
-      {helpfull ? props.question.question_helpfulness + 1 : props.question.question_helpfulness }</button>
+      {helpfull ? question.question_helpfulness + 1 : question.question_helpfulness }</button>
       <button type="button" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</button>
         </div>
-      <div> by {props.question.asker_name} at {props.question.question_date}</div>
-      <AnswerList aList={props.question.answers}/>
+      <div> by {question.asker_name} at {question.question_date}</div>
+      <AnswerList aList={question.answers}/>
+      <button type="button" onClick={(event) => { clickHandler(event); }}>add Answer</button>
+      {isClicked && <AnswerForm id={question.question_id} setIsClicked={setIsClicked} />}
     </div>
   );
 };

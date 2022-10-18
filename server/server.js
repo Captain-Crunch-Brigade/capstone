@@ -73,8 +73,17 @@ app.get('/api/qa/questions/:id', async (req, res) => {
       }
     });
 });
-app.post('/api/qa/questions', async (req, res) => {
+app.post('/api/qa/questions', (req, res) => {
   console.log('post request', req.body);
+  atelierAPI.postQuestion(req.body)
+    .then((results) => {
+      console.log('results from post call: ', results.data);
+      res.status(201).send(results.data);
+    })
+    .catch((err) => {
+      console.log('error in server call: ', err);
+      res.status(404).send('Not Found');
+    })
 });
 
 app.listen(3000);
