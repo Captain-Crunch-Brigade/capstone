@@ -50,7 +50,12 @@
   margin: 10px 0 0 0;
 }
 
-#thumbnails h3 {
-  background-color: grey;
-  width: fit-content;
+#thumbnails {
+  margin: 10px;
+  height: 40vw;
+}
+
+#thumbnails img {
+  display: block;
+  margin-bottom: 5px;
 }
