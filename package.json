@@ -7,7 +7,8 @@
     "dev-server": "NODE_ENV=DEVELOPMENT webpack-dev-server --config webpack.dev.js",
     "dev": "NODE_ENV=DEVELOPMENT webpack --config webpack.dev.js",
     "build": "NODE_ENV=PRODUCTION webpack --config webpack.prod.js",
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "Kee Wook Lee, James Flaws, Robert Garcia",
@@ -56,5 +57,19 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",
     "webpack-merge": "^5.8.0"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/tests/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/client/tests/__mocks__/styleMock.js"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    }
   }
 }

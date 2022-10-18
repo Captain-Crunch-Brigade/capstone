@@ -1,12 +1,12 @@
 import React from 'react';
-import Comparison from './Comparison';
+import YourOutfit from './YourOutfit';
 import RelatedProducts from './RelatedProducts';
 
 const RelatedItemsAndComparison = function RelatedItemsAndComparison() {
   return (
     <>
       <RelatedProducts />
-      <Comparison />
+      <YourOutfit />
     </>
   );
 };
