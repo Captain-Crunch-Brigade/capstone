@@ -74,6 +74,41 @@ app.get('/api/styles/:id', async (req, res) => {
     }
   });
 });
+app.get('/api/qa/questions/:id', async (req, res) => {
+  const { id } = req.params;
+  atelierAPI.getQuestions(id)
+    .then((results) => {
+      res.status(200).json(results);
+    })
+    .catch((err) => {
+      if (err) {
+        res.status(404).send('Not Found');
+      }
+    });
+});
+app.post('/api/qa/questions', (req, res) => {
+  console.log('post request', req.body);
+  atelierAPI.postQuestion(req.body)
+    .then((results) => {
+      console.log('results from post call: ', results.data);
+      res.status(201).send(results.data);
+    })
+    .catch((err) => {
+      console.log('error in server call: ', err);
+      res.status(404).send('Not Found');
+    })
+});
 
+app.put('/api/qa/questions/helpful', (req, res) => {
+  console.log('put request at server req.body: ', req.body)
+  atelierAPI.qHelpful(req.body.id)
+    .then((results) => {
+      res.status(204).send(results.data);
+    })
+    .catch((err) => {
+      console.log('error in server call: ', err);
+      res.status(404).send('Not Found');
+    })
+})
 app.listen(3000);
 console.log('Server listening at http://localhost:3000');

@@ -1,20 +1,31 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import TopBar from './TopBar.jsx';
-import QuestionList from './QuestionList.jsx';
+import TopBar from './TopBar';
+import QuestionList from './QuestionList';
 import BottomBar from './BottomBar';
-const QnAWidget = function(props) {
-  const [QList, setQlist] = React.useState([])
-  //axios call here
 
+const QnAWidget = function ({id}) {
+  const [QList, setQlist] = useState([{}]);
+  const [search, setSearch] = useState('');
+  useEffect(() => {
+    axios.get(`/api/qa/questions/${id}`)
+      .then((data) =>{
+        setQlist(data.data.results);
+      })
+      .catch((err) => {
+        console.log('error in qna axios call: ', err);
+      })
+  }, []);
+  useEffect(() => {
 
-  return(
+  }, [search]);
+  return (
     <div>
-      <TopBar/>
-      <QuestionList list={Qlist}/>
-      <BottomBar/>
+      <TopBar setSearch={setSearch}/>
+      <QuestionList list={QList} search={search}/>
+      <BottomBar productid={id}/>
     </div>
-  )
-}
+  );
+};
 
 export default QnAWidget;

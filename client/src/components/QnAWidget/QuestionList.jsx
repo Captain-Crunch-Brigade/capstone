@@ -1,18 +1,53 @@
 import React from 'react';
-import Question from '.Question.jsx'
-const QuestionList = function(props) {
-  const [renderList, setRenderList] = React.useState([]);
-  React.useEffect(()=>{
-    //test props.list for length if > 2 setstate to just the first 2 items
-  }, [])
-  return(
-    <div>
-      {renderList.map((item) =>(
-        <Question question={item}/>
-      ))}
+import PropTypes from 'prop-types';
+import Question from './Question';
+import MoreQuestions from './MoreQuestions';
 
-      <button>if more questiosn button</button>
+const QuestionList = function ({ list, search }) {
+  const [renderList, setRenderList] = React.useState([]);
+  const [listLength, setListLength] = React.useState(2)
+  React.useEffect(() => {
+    if (list.length > listLength) {
+      let i = 0;
+      const setArr = [];
+      if (search.length >= 3) {
+        while (i < list.length && setArr.length < listLength) {
+          if(list[i].question_body.includes(search) || list[i].asker_name.includes(search)) {
+            setArr.push(list[i]);
+          }
+          i += 1;
+        }
+        setRenderList(setArr)
+      } else {
+        for (let j = 0; j < list.length; j++) {
+          if (setArr.length < listLength) {
+            setArr.push(list[j])
+          }
+        }
+        setRenderList(setArr);
+      }
+    } else if (list.length > 0) {
+      setRenderList(list);
+    } else {
+      setRenderList([]);
+    }
+  }, [list, search, listLength]);
+  return (
+    <div>
+      {renderList.map((item) => (
+        <Question question={item} />
+      ))}
+      <MoreQuestions qList={list} count={listLength} setCount={setListLength}/>
     </div>
   )
-}
+};
+
+// QuestionList.propTypes = {
+//   list: PropTypes.Array,
+//   search: PropTypes.String,
+// };
+// QuestionList.defaultProps = {
+//   list : [],
+//   search: '',
+// };
 export default QuestionList;

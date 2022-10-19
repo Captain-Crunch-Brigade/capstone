@@ -1,18 +1,34 @@
 import React from 'react';
-import Answer from './Answer.jsx';
+import Answer from './Answer';
+import MoreAnswers from './MoreAnswers'
 
-const AnswerList = function(props){
+const AnswerList = function ({aList}) {
   const [answerList, setAnswerList] = React.useState([]);
-  React.useEffect(()=>{
-    //test props.alist for length if > 2 setstate to just the first 2 items
-  }, [])
-  return(
+  const [listCount, setListCount] = React.useState(2)
+  React.useEffect(() => {
+    let listArr = [];
+    for (let i in aList) {
+      listArr.push(aList[i]);
+    }
+    if (listArr.length > listCount) {
+      const renderArr = [];
+      for (let i = 0; i < listArr.length && i < listCount; i++) {
+        renderArr.push(listArr[i])
+      }
+      setAnswerList([...renderArr]);
+    } else if (listArr.length > 0) {
+      setAnswerList(listArr);
+    } else {
+      setAnswerList([]);
+    }
+  }, [aList, listCount]);
+  return (
     <div>
-      {answerList.map((item) =>(
-        <Answer answer={item}/>
+      {answerList.map((item) => (
+        <Answer answer={item} />
       ))}
-      <button>if more answers button</button>
+      <MoreAnswers aList={aList} count={listCount} setCount={setListCount} />
     </div>
-  )
-}
+  );
+};
 export default AnswerList;
