@@ -88,7 +88,7 @@ const Card = function Card({ id }) {
       {modalOpen && <Comparison setModalOpen={setModalOpen} data={data} compareId={id} />}
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
-      <Price>{`$${data.price}`}</Price>
+      <Price>{`$${data.defaultPrice}`}</Price>
       <Stars ratings={data.ratings} />
     </Wrapper>
   );
