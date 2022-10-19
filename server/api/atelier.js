@@ -85,18 +85,20 @@ const getQuestions = async (id) => {
 };
 
 const postQuestion = async (obj) => {
-  // const inputs = {
-  //   body: text,
-  //   name: qname,
-  //   email: qemail,
-  //   product_id: id
-  // };
   console.log('obj passed to postQuestion: ', obj);
   try {
-    const results = await axios.post(`${baseURL}/qa/questions`, obj, authHeader)
+    const results = await axios.post(`${baseURL}/qa/questions`, obj, authHeader);
     return results;
   } catch (err) {
     console.log('error in api call:', err);
+    throw new Error(err);
+  }
+}
+const qHelpful = async (id) => {
+  try {
+    const results = await axios.put(`${baseURL}/qa/questions/${id}/helpful`, {}, authHeader);
+    return results;
+  } catch (err) {
     throw new Error(err);
   }
 }
@@ -108,4 +110,5 @@ module.exports = {
   getThumbnailImages,
   getQuestions,
   postQuestion,
+  qHelpful,
 };

@@ -99,5 +99,16 @@ app.post('/api/qa/questions', (req, res) => {
     })
 });
 
+app.put('/api/qa/questions/helpful', (req, res) => {
+  console.log('put request at server req.body: ', req.body)
+  atelierAPI.qHelpful(req.body.id)
+    .then((results) => {
+      res.status(204).send(results.data);
+    })
+    .catch((err) => {
+      console.log('error in server call: ', err);
+      res.status(404).send('Not Found');
+    })
+})
 app.listen(3000);
 console.log('Server listening at http://localhost:3000');
