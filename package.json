@@ -50,6 +50,7 @@
     "node-sass": "^7.0.3",
     "nodemon": "^2.0.20",
     "react-refresh": "^0.14.0",
+    "react-test-renderer": "^18.2.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.6",
@@ -59,8 +60,13 @@
     "webpack-merge": "^5.8.0"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/tests/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/client/tests/__mocks__/styleMock.js"
