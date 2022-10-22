@@ -88,7 +88,7 @@ const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
           ? relatedItems.related_items
             .map((item) => <Card id={item} key={item} />)
           : null }
-        {outfit.length === 0
+        {outfit.length === 0 && isOutfit
           ? <EmptyCard outfit={outfit} />
           : outfit && outfit.map
           && outfit.map((item) => <Card id={item} key={item} />)}
