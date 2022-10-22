@@ -1,26 +1,35 @@
 import React from 'react';
+import axios from 'axios';
 import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm'
+
 const Question = function ({question}) {
   const [helpfull, setHelpfull] = React.useState(false);
   const [reported, setReported] = React.useState(false);
   const [isClicked, setIsClicked] = React.useState(false);
-  const clickHandler = (event) => {
-    event.preventDefault();
+  const clickHandler = () => {
     setIsClicked(true);
   }
-  const helphandler = (event) => {
-    event.preventDefault();
+  const helphandler = () => {
     if (!helpfull) {
       setHelpfull(!helpfull);
-      //when put request works put here
+      axios.put('/api/qa/questions/helpful', { id: question.question_id })
+        .then((results) => {
+        })
+        .catch((err) => {
+          console.log('error in helpHandler axios call: ', err);
+        });
     }
   }
-  const reporthandler = (event) => {
-    event.preventDefault();
+  const reporthandler = () => {
     if (!reported) {
       setReported(!reported);
-      // when put request works put here
+      axios.put('/api/qa/questions/report', { id: question.question_id })
+        .then((results) => {
+        })
+        .catch((err) => {
+          console.log('error in helpHandler axios call: ', err);
+        });
     }
   }
   React.useEffect(() => {
@@ -30,9 +39,11 @@ const Question = function ({question}) {
       <div>
         Q:
         {question.question_body}
-      <button type="button" onClick={(e) => { helphandler(e)}}>helpfull
-      {helpfull ? question.question_helpfulness + 1 : question.question_helpfulness }</button>
-      <button type="button" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</button>
+        <button type="button" onClick={(e) => { helphandler(e)}}>
+          helpfull
+          {helpfull ? question.question_helpfulness + 1 : question.question_helpfulness }
+        </button>
+        <button type="button" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</button>
         </div>
       <div> by {question.asker_name} at {question.question_date}</div>
       <AnswerList aList={question.answers}/>

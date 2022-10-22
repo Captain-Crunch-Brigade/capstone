@@ -85,7 +85,6 @@ const getQuestions = async (id) => {
 };
 
 const postQuestion = async (obj) => {
-  console.log('obj passed to postQuestion: ', obj);
   try {
     const results = await axios.post(`${baseURL}/qa/questions`, obj, authHeader);
     return results;
@@ -96,7 +95,40 @@ const postQuestion = async (obj) => {
 }
 const qHelpful = async (id) => {
   try {
-    const results = await axios.put(`${baseURL}/qa/questions/${id}/helpful`, {}, authHeader);
+    const results = await axios.put(`${baseURL}/qa/questions/${id}/helpful`, {'question_id': id}, authHeader);
+    return results;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+const qReport = async (id) => {
+  try {
+    const results = await axios.put(`${baseURL}/qa/questions/${id}/report`, {'question_id': id}, authHeader);
+    return results;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+const postAnswer = async (obj, id) => {
+  try {
+    const results = await axios.post(`${baseURL}/qa/questions/${id}/answers`, obj, authHeader);
+    return results;
+  } catch (err) {
+    console.log('error in api call:', err);
+    throw new Error(err);
+  }
+}
+const aHelpful = async (id) => {
+  try {
+    const results = await axios.put(`${baseURL}/qa/answers/${id}/helpful`, {'question_id': id}, authHeader);
+    return results;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+const aReport = async (id) => {
+  try {
+    const results = await axios.put(`${baseURL}/qa/answers/${id}/report`, {'question_id': id}, authHeader);
     return results;
   } catch (err) {
     throw new Error(err);
@@ -111,4 +143,8 @@ module.exports = {
   getQuestions,
   postQuestion,
   qHelpful,
+  qReport,
+  postAnswer,
+  aHelpful,
+  aReport
 };

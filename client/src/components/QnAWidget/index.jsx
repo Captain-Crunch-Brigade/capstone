@@ -1,10 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import TopBar from './TopBar';
 import QuestionList from './QuestionList';
 import BottomBar from './BottomBar';
 
-const QnAWidget = function ({id}) {
+const QnAWidget = function () {
+  const { id } = useParams();
   const [QList, setQlist] = useState([{}]);
   const [search, setSearch] = useState('');
   useEffect(() => {

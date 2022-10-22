@@ -5,14 +5,21 @@ const initState = {
   body: '',
   name: '',
   email: '',
-  Photos: '',
+  Photos: []
 }
 
 const AnswerForm = function ({id, setIsClicked}) {
   const [form, setForm] = React.useState(initState);
   const submithandler = (event) => {
     event.preventDefault();
-    setForm(initState);
+    axios.post(`/api/qa/answers/${id}`, form)
+      .then((data) =>{
+        setIsClicked(false);
+      })
+      .catch((err) => {
+        console.log('error in qna axios call: ', err);
+      })
+
   }
 
   return (
@@ -27,6 +34,7 @@ const AnswerForm = function ({id, setIsClicked}) {
         <div>For privacy reasons, do not use your full name or email address</div>
         <label>Email:</label>
         <input type="text" id="email" onChange={(e) => (setForm({...form, email: e.target.value}))} value={form.email} placeholder="Example: jack@email.com"/>
+        <input type="submit" value="Submit Answer" />
       </form>
     </div>
   );

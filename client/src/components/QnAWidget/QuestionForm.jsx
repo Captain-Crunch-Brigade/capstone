@@ -11,10 +11,8 @@ const QuestionForm = function ({productid, setIsClicked}) {
   const [form, setForm] = React.useState(initState);
   const submithandler = (event) => {
     event.preventDefault();
-    console.log('form: ', form);
     axios.post(`/api/qa/questions/`, form)
       .then((data) =>{
-        console.log('post from add question: ', data.data);
         setIsClicked(false);
       })
       .catch((err) => {
