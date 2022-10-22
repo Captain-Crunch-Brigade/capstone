@@ -1,7 +1,9 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import EmptyCard from './EmptyCard';
 
 const Container = styled.div`
   width: 80%;
@@ -53,10 +55,11 @@ const RightButton = styled(Button)`
   right: 0;
 `;
 
-const Carousel = function Carousel({ relatedItems }) {
+const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
-  const totalSlides = relatedItems.related_items.length - 1;
+  const totalSlides = relatedItems ? relatedItems.related_items.length - 1
+    : outfit ? outfit.length - 1 : 0;
 
   const handlePrev = () => {
     const isFirstSlide = currentSlide === 0;
@@ -78,15 +81,20 @@ const Carousel = function Carousel({ relatedItems }) {
 
   return (
     <Container>
-      {currentSlide > 0 && <LeftButton onClick={handlePrev}>&laquo;</LeftButton>}
+      {currentSlide > 0 && <LeftButton data-testid="prevButton" onClick={handlePrev}>&laquo;</LeftButton>}
       <CarouselDiv ref={slideRef}>
         {relatedItems?.related_items
           ? relatedItems.related_items
             .map((item) => <Card id={item} key={item} />)
           : null }
+        {outfit.length === 0 && isOutfit
+          ? <EmptyCard outfit={outfit} />
+          : outfit && outfit.map
+          && outfit.map((item) => <Card id={item} key={item} />)}
+        {isOutfit ? <EmptyCard outfit={outfit} /> : null}
       </CarouselDiv>
       {currentSlide < totalSlides
-      && <RightButton onClick={handleNext}>&raquo;</RightButton>}
+      && <RightButton data-testid="nextButton" onClick={handleNext}>&raquo;</RightButton>}
     </Container>
   );
 };
@@ -96,6 +104,8 @@ Carousel.propTypes = {
     id: PropTypes.number,
     related_items: PropTypes.array,
   }),
+  outfit: PropTypes.array,
+  isOutfit: PropTypes.bool,
 };
 
 Carousel.defaultProps = {
@@ -103,6 +113,8 @@ Carousel.defaultProps = {
     id: null,
     related_items: [],
   },
+  outfit: [],
+  isOutfit: false,
 };
 
 export default Carousel;
