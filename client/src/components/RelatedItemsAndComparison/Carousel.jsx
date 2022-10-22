@@ -79,7 +79,6 @@ const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
     }
   };
 
-  // const outfitMap = outfit && outfit.map((item) => <Card id={item} key={item} />);
   return (
     <Container>
       {currentSlide > 0 && <LeftButton data-testid="prevButton" onClick={handlePrev}>&laquo;</LeftButton>}
