@@ -85,6 +85,7 @@ const getQuestions = async (id) => {
 };
 
 const postQuestion = async (obj) => {
+  console.log('obj in api call: ', obj);
   try {
     const results = await axios.post(`${baseURL}/qa/questions`, obj, authHeader);
     return results;

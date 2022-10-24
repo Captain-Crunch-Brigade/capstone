@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.get('/api/products/:id', async (req, res) => {
   const { id } = req.params;
-
   atelierAPI.getProduct(id)
     .then((results) => {
       res.status(200).json(results);
