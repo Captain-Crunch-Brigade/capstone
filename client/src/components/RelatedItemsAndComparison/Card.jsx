@@ -44,7 +44,15 @@ const Star = styled.div`
   right: 0;
 `;
 
-const Card = function Card({ id }) {
+const Cross = styled.div`
+  font-size: 25px;
+  font-family: Times;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+`;
+
+const Card = function Card({ id, isOutfit, setOutfit }) {
   const [data, setData] = useState({
     name: '',
     category: '',
@@ -81,14 +89,22 @@ const Card = function Card({ id }) {
     setModalOpen(true);
   };
 
+  const removeOutfit = () => {
+    const arr = JSON.parse(localStorage.getItem('outfit'));
+    const idx = arr.indexOf(id);
+    arr.splice(idx, 1);
+    localStorage.setItem('outfit', JSON.stringify(arr));
+    setOutfit(arr);
+  };
+
   return (
     <Wrapper>
       <Image onClick={navigateToProductId} src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
-      <Star onClick={showModal}>☆</Star>
+      {isOutfit ? <Cross onClick={removeOutfit}>X</Cross> : <Star onClick={showModal}>☆</Star>}
       {modalOpen && <Comparison setModalOpen={setModalOpen} data={data} compareId={id} />}
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
-      <Price>{`$${data.price}`}</Price>
+      <Price>{`$${data.defaultPrice}`}</Price>
       <Stars ratings={data.ratings} />
     </Wrapper>
   );
@@ -96,10 +112,14 @@ const Card = function Card({ id }) {
 
 Card.propTypes = {
   id: PropTypes.number,
+  isOutfit: PropTypes.bool,
+  setOutfit: PropTypes.func,
 };
 
 Card.defaultProps = {
   id: null,
+  isOutfit: false,
+  setOutfit: null,
 };
 
 export default Card;
