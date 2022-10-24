@@ -55,7 +55,9 @@ const RightButton = styled(Button)`
   right: 0;
 `;
 
-const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
+const Carousel = function Carousel({
+  relatedItems, outfit, isOutfit, setOutfit,
+}) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
   const totalSlides = relatedItems ? relatedItems.related_items.length - 1
@@ -80,7 +82,7 @@ const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
   };
 
   return (
-    <Container>
+    <Container data-testid="carousel">
       {currentSlide > 0 && <LeftButton data-testid="prevButton" onClick={handlePrev}>&laquo;</LeftButton>}
       <CarouselDiv ref={slideRef}>
         {relatedItems?.related_items
@@ -88,10 +90,10 @@ const Carousel = function Carousel({ relatedItems, outfit, isOutfit }) {
             .map((item) => <Card id={item} key={item} />)
           : null }
         {outfit.length === 0 && isOutfit
-          ? <EmptyCard outfit={outfit} />
+          ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
           : outfit && outfit.map
-          && outfit.map((item) => <Card id={item} key={item} />)}
-        {isOutfit ? <EmptyCard outfit={outfit} /> : null}
+          && outfit.map((item) => <Card id={item} key={item} isOutfit setOutfit={setOutfit} />)}
+        {isOutfit ? <EmptyCard outfit={outfit} setOutfit={setOutfit} /> : null}
       </CarouselDiv>
       {currentSlide < totalSlides
       && <RightButton data-testid="nextButton" onClick={handleNext}>&raquo;</RightButton>}
@@ -106,6 +108,7 @@ Carousel.propTypes = {
   }),
   outfit: PropTypes.array,
   isOutfit: PropTypes.bool,
+  setOutfit: PropTypes.func,
 };
 
 Carousel.defaultProps = {
@@ -115,6 +118,7 @@ Carousel.defaultProps = {
   },
   outfit: [],
   isOutfit: false,
+  setOutfit: null,
 };
 
 export default Carousel;
