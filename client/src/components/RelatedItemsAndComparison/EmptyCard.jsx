@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 300px;
@@ -21,13 +21,16 @@ const Plus = styled.div`
   cursor: pointer;
 `;
 
-const EmptyCard = function EmptyCard({ outfit }) {
+const EmptyCard = function EmptyCard({ outfit, setOutfit }) {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     if (!outfit.includes(id)) {
       outfit.push(id);
       localStorage.setItem('outfit', JSON.stringify(outfit));
+      setOutfit(outfit);
+      navigate(0);
     }
   };
 
@@ -42,10 +45,12 @@ const EmptyCard = function EmptyCard({ outfit }) {
 
 EmptyCard.propTypes = {
   outfit: PropTypes.array,
+  setOutfit: PropTypes.func,
 };
 
 EmptyCard.defaultProps = {
   outfit: [],
+  setOutfit: null,
 };
 
 export default EmptyCard;

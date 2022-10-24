@@ -19,7 +19,7 @@ const YourOutfit = function YourOutfit() {
   return (
     <div>
       YOUR OUTFIT
-      <Carousel outfit={outfit} isOutfit />
+      <Carousel outfit={outfit} isOutfit setOutfit={setOutfit} />
     </div>
   );
 };
