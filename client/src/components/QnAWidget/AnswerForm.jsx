@@ -11,8 +11,8 @@ const Background = styled.div`
   z-index: 500;
 `;
 const ModalWrapper = styled.div`
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 20%;
   position: fixed;
   max-height: 80%;
   z-index: 999;
@@ -25,6 +25,25 @@ const ModalWrapper = styled.div`
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 `;
+const Subtitle = styled.div`
+  display: block;
+  margin-block-end: 0px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 7px;
+  padding-left: 20px;
+`;
+const Header = styled.div`
+  display: block;
+  margin-block-end: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+`;
+const TextArea = styled.textarea`
+  width: 400px;
+  height: 100px;
+`
 const initState = {
   body: '',
   name: '',
@@ -50,10 +69,14 @@ const AnswerForm = function ({id, setIsClicked}) {
   return (
     <div>
       <ModalWrapper>
-      <h4>Submit your Answer </h4>
-      <h5>About the product</h5>
+        <Header>
+          <div>Submit your Answer </div>
+        </Header>
+        <Subtitle>
+          About the product
+        </Subtitle>
       <form onSubmit={submithandler}>
-        <textarea type="text" id="body" onChange={(e) => (setForm({...form, body: e.target.value}))} value={form.body} placeholder="Why did you like the product or not" />
+        <TextArea type="text" id="body" onChange={(e) => (setForm({...form, body: e.target.value}))} value={form.body} placeholder="Why did you like the product or not" />
         <div></div>
         <label>NickName:</label>
         <input type="text" id="name" onChange={(e) => (setForm({...form, name: e.target.value}))} value={form.name} placeholder="Example: jack543!"/>
