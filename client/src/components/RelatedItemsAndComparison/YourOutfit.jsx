@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Carousel from './Carousel';
 
+const Wrapper = styled.div`
+  margin: 30px 0 0 0;
+`;
+
+const Word = styled.p`
+  margin-left: 11%;
+`;
+
 const YourOutfit = function YourOutfit() {
-  const [outfit, setOutfit] = useState(localStorage.getItem('outfit') || []);
+  const [outfit, setOutfit] = useState(JSON.parse(localStorage.getItem('outfit')) || []);
 
   useEffect(() => {
     let storageArr = localStorage.getItem('outfit');
@@ -17,10 +26,12 @@ const YourOutfit = function YourOutfit() {
   }, []);
 
   return (
-    <div>
-      YOUR OUTFIT
+    <Wrapper>
+      <Word>
+        YOUR OUTFIT
+      </Word>
       <Carousel outfit={outfit} isOutfit setOutfit={setOutfit} />
-    </div>
+    </Wrapper>
   );
 };
 

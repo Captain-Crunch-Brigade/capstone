@@ -8,7 +8,8 @@
     "dev": "NODE_ENV=DEVELOPMENT webpack --config webpack.dev.js",
     "build": "NODE_ENV=PRODUCTION webpack --config webpack.prod.js",
     "start": "nodemon server/server.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "Kee Wook Lee, James Flaws, Robert Garcia",
@@ -23,6 +24,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
+    "react-svg-loader": "^3.0.3",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
@@ -81,6 +83,14 @@
     ],
     "transform": {
       "^.+\\.[tj]sx?$": "babel-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "statements": 70,
+        "branches": 70,
+        "functions": 70,
+        "lines": 70
+      }
     }
   }
 }
