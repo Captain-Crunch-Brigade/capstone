@@ -18,4 +18,22 @@ describe('starRating helper function tests', () => {
     const result = getStarsByQuarter(num);
     expect(result).toBe(3.25);
   });
+
+  it('should return null if input is less or larger than 5', () => {
+    const num = 7.00;
+    const result = getStarsByQuarter(num);
+    expect(result).toBe(null);
+  });
+
+  it('should change the ratings to 3 if input is 2.99', () => {
+    const num = 2.99;
+    const result = getStarsByQuarter(num);
+    expect(result).toBe(3);
+  });
+
+  it('should return 0 if input is less than 0.125', () => {
+    const num = 0.08;
+    const result = getStarsByQuarter(num);
+    expect(result).toBe(0);
+  });
 });

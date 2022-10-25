@@ -6,13 +6,14 @@ import axios from 'axios';
 import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
 import Comparison from './Comparison';
 import Stars from '../Stars';
+import CloseBtn from '../../assets/images/CloseBtn';
 
 const Wrapper = styled.div`
   width: 300px;
   height: 400px;
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
-  background-color: #bcbcbc;
+  background-color: #f0f0f5;
   position: relative;
 `;
 
@@ -21,6 +22,7 @@ const Image = styled.img`
   height: 300px;
   vertical-align: middle;
   border-bottom: 1px solid grey;
+  background-color: white;
 `;
 
 const Category = styled.div`
@@ -44,7 +46,15 @@ const Star = styled.div`
   right: 0;
 `;
 
-const Card = function Card({ id }) {
+const Cross = styled.div`
+  font-size: 25px;
+  font-family: Times;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+`;
+
+const Card = function Card({ id, isOutfit, setOutfit }) {
   const [data, setData] = useState({
     name: '',
     category: '',
@@ -81,25 +91,39 @@ const Card = function Card({ id }) {
     setModalOpen(true);
   };
 
+  const removeOutfit = () => {
+    const arr = JSON.parse(localStorage.getItem('outfit'));
+    const idx = arr.indexOf(id);
+    arr.splice(idx, 1);
+    localStorage.setItem('outfit', JSON.stringify(arr));
+    setOutfit(arr);
+  };
+
   return (
     <Wrapper>
       <Image onClick={navigateToProductId} src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
-      <Star onClick={showModal}>☆</Star>
+      {isOutfit
+        ? <Cross><CloseBtn onClick={removeOutfit}>X</CloseBtn></Cross>
+        : <Star onClick={showModal}>☆</Star>}
       {modalOpen && <Comparison setModalOpen={setModalOpen} data={data} compareId={id} />}
       <Category>{data.category}</Category>
       <Name>{data.name}</Name>
-      <Price>{`$${data.price}`}</Price>
+      <Price>{`$${data.defaultPrice}`}</Price>
       <Stars ratings={data.ratings} />
     </Wrapper>
   );
 };
 
 Card.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
+  isOutfit: PropTypes.bool,
+  setOutfit: PropTypes.func,
 };
 
 Card.defaultProps = {
   id: null,
+  isOutfit: false,
+  setOutfit: null,
 };
 
 export default Card;
