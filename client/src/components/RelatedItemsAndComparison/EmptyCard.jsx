@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   height: 400px;
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
-  background-color: #bcbcbc;
+  background-color: #f0f0f5;
   position: relative;
 `;
 
