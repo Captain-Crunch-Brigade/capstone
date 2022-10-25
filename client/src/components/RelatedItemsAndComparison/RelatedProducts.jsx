@@ -15,7 +15,7 @@ const RelatedProducts = function RelatedItems() {
       .then((results) => {
         setData((prev) => ({
           ...prev,
-          id: parseInt(id, 10),
+          id,
           related_items: results.data,
         }));
       });

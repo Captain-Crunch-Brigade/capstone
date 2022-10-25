@@ -11,12 +11,10 @@ const Container = styled.div`
   height: 450px;
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
   overflow:hidden;
 `;
 
 const CarouselDiv = styled.div`
-  border: 1px solid black;
   width: 95%;
   margin: auto;
   border-radius: 3px;
@@ -60,8 +58,12 @@ const Carousel = function Carousel({
 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
-  const totalSlides = relatedItems ? relatedItems.related_items.length - 1
-    : outfit ? outfit.length - 1 : 0;
+  let totalSlides = 0;
+  if (relatedItems.id) {
+    totalSlides = relatedItems.related_items.length - 1;
+  } else if (outfit) {
+    totalSlides = outfit.length - 1;
+  }
 
   const handlePrev = () => {
     const isFirstSlide = currentSlide === 0;
@@ -92,7 +94,7 @@ const Carousel = function Carousel({
         {outfit.length === 0 && isOutfit
           ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
           : outfit && outfit.map
-          && outfit.map((item) => <Card id={item} key={item} isOutfit setOutfit={setOutfit} />)}
+          && outfit.map((item) => <Card id={(item)} key={item} isOutfit setOutfit={setOutfit} />)}
         {isOutfit ? <EmptyCard outfit={outfit} setOutfit={setOutfit} /> : null}
       </CarouselDiv>
       {currentSlide < totalSlides
@@ -103,7 +105,7 @@ const Carousel = function Carousel({
 
 Carousel.propTypes = {
   relatedItems: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     related_items: PropTypes.array,
   }),
   outfit: PropTypes.array,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Carousel from './Carousel';
 
 const YourOutfit = function YourOutfit() {
-  const [outfit, setOutfit] = useState(localStorage.getItem('outfit') || []);
+  const [outfit, setOutfit] = useState(JSON.parse(localStorage.getItem('outfit')) || []);
 
   useEffect(() => {
     let storageArr = localStorage.getItem('outfit');
