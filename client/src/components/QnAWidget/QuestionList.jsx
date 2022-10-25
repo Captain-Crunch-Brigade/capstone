@@ -10,7 +10,7 @@ const Scrollarea = styled.div`
 `;
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
-  const [listLength, setListLength] = React.useState(2)
+  const [listLength, setListLength] = React.useState(4)
   React.useEffect(() => {
     if (list.length > listLength) {
       let i = 0;

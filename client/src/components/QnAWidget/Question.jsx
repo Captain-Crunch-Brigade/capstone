@@ -17,6 +17,13 @@ const Firstline = styled.div`
 const Secondline = styled.div`
   padding-left: 20px;
 `;
+const HelpfulQ = styled.div`
+  padding-left: 30px;
+`;
+const ReportLink = styled.a`
+  padding-left: 30px;
+`;
+
 const Question = function ({question}) {
   const [helpfull, setHelpfull] = React.useState(false);
   const [reported, setReported] = React.useState(false);
@@ -52,20 +59,21 @@ const Question = function ({question}) {
     <div>
       <div>
         <Firstline>
-        <Qbox>Q:</Qbox>
-        {question.question_body}
-        <button type="button" onClick={(e) => { helphandler(e)}}>
-          helpfull
-          {helpfull ? question.question_helpfulness + 1 : question.question_helpfulness }
-        </button>
-        <button type="button" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</button>
+          <Qbox>Q:</Qbox>
+          {question.question_body}
+          <HelpfulQ>Helpful?</HelpfulQ>
+          <a href="#" onClick={(e) => { helphandler(e)}}>
+            Yes
+            ({helpfull ? question.question_helpfulness + 1 : question.question_helpfulness })
+          </a>
+          <ReportLink href="#" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</ReportLink>
         </Firstline>
         </div>
       <Secondline>
-      <div> by {question.asker_name} at {question.question_date}</div>
-      <AnswerList aList={question.answers}/>
-      <button type="button" onClick={(event) => { clickHandler(event); }}>add Answer</button>
-      {isClicked && <AnswerForm id={question.question_id} setIsClicked={setIsClicked} />}
+        <div> by {question.asker_name} at {question.question_date}</div>
+        <button type="button" onClick={(event) => { clickHandler(event); }}>add Answer</button>
+        <AnswerList aList={question.answers}/>
+        {isClicked && <AnswerForm id={question.question_id} setIsClicked={setIsClicked} />}
       </Secondline>
     </div>
   );
