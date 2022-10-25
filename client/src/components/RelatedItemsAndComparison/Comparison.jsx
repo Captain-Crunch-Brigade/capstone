@@ -17,7 +17,7 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 50%;
+  width: 40%;
   height: 50%;
   position: fixed;
   max-height: 80%;
@@ -27,14 +27,26 @@ const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
 
   background-color: white;
-  border: 1px solid #eee;
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 `;
 
+const TableDiv = styled.div`
+  width: fit-content;
+  overflow-y: scroll;
+  margin: auto;
+  & > table {
+    border-spacing: 70px 20px;
+  }
+
+  & > table > tbody > tr {
+    text-align: center;
+  }
+
+`;
 // TODO: give margin on text in modal
-const ModalHeader = styled.p`
-  font-size: 12px;
+const ModalHeader = styled.h3`
+  text-align: center;
 `;
 
 const Comparison = function Comparison({ setModalOpen, data }) {
@@ -81,25 +93,27 @@ const Comparison = function Comparison({ setModalOpen, data }) {
   return (
     <Background onClick={modalClose}>
       <ModalWrapper>
-        <ModalHeader>COMPARING</ModalHeader>
-        <table>
-          <thead>
-            <tr>
-              <th>{originalFeature.name}</th>
-              <th>Features</th>
-              <th>{data.name}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(combinedFeature) ? combinedFeature.map((item, index) => (
-              <tr key={index}>
-                {column.map((col, idx) => (
-                  <td key={idx}>{item[col]}</td>
-                ))}
+        <TableDiv>
+          <ModalHeader>COMPARING</ModalHeader>
+          <table>
+            <thead>
+              <tr>
+                <th>{originalFeature.name}</th>
+                <th>Features</th>
+                <th>{data.name}</th>
               </tr>
-            )) : null}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {Array.isArray(combinedFeature) ? combinedFeature.map((item, index) => (
+                <tr key={index}>
+                  {column.map((col, idx) => (
+                    <td key={idx}>{item[col]}</td>
+                  ))}
+                </tr>
+              )) : null}
+            </tbody>
+          </table>
+        </TableDiv>
       </ModalWrapper>
     </Background>
   );
