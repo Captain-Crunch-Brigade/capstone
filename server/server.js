@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.get('/api/products/:id', async (req, res) => {
   const { id } = req.params;
-
   atelierAPI.getProduct(id)
     .then((results) => {
       res.status(200).json(results);
@@ -87,10 +86,8 @@ app.get('/api/qa/questions/:id', async (req, res) => {
     });
 });
 app.post('/api/qa/questions', (req, res) => {
-  console.log('post request', req.body);
   atelierAPI.postQuestion(req.body)
     .then((results) => {
-      console.log('results from post call: ', results.data);
       res.status(201).send(results.data);
     })
     .catch((err) => {
@@ -100,15 +97,52 @@ app.post('/api/qa/questions', (req, res) => {
 });
 
 app.put('/api/qa/questions/helpful', (req, res) => {
-  console.log('put request at server req.body: ', req.body)
   atelierAPI.qHelpful(req.body.id)
     .then((results) => {
+      res.status(204).send(results.statusCode);
+    })
+    .catch((err) => {
+      res.status(404).send('Not Found');
+    })
+});
+app.put('/api/qa/questions/report', (req, res) => {
+  atelierAPI.qReport(req.body.id)
+    .then((results) => {
       res.status(204).send(results.data);
+    })
+    .catch((err) => {
+      res.status(404).send('Not Found');
+    })
+});
+app.post('/api/qa/answers/:id', (req, res) => {
+  const { id } = req.params;
+  atelierAPI.postAnswer(req.body, id)
+    .then((results) => {
+      res.status(201).send(results.data);
     })
     .catch((err) => {
       console.log('error in server call: ', err);
       res.status(404).send('Not Found');
     })
-})
+});
+
+app.put('/api/qa/answers/helpful', (req, res) => {
+  atelierAPI.aHelpful(req.body.id)
+    .then((results) => {
+      res.status(204).send(results.statusCode);
+    })
+    .catch((err) => {
+      res.status(404).send('Not Found');
+    })
+});
+app.put('/api/qa/answers/report', (req, res) => {
+  atelierAPI.aReport(req.body.id)
+    .then((results) => {
+      res.status(204).send(results.data);
+    })
+    .catch((err) => {
+      res.status(404).send('Not Found');
+    })
+});
 app.listen(3000);
 console.log('Server listening at http://localhost:3000');
