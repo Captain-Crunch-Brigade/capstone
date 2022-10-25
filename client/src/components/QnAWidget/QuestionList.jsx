@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Question from './Question';
 import MoreQuestions from './MoreQuestions';
-import styled from 'styled-components';
 
 const Scrollarea = styled.div`
   overflow-y: scroll;
-  height: 400px;
+  max-height: 400px;
 `;
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
