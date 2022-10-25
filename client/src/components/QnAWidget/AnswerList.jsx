@@ -1,11 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import Answer from './Answer';
 import MoreAnswers from './MoreAnswers'
-import styled from 'styled-components';
 
 const Scrollarea = styled.div`
   overflow-y: scroll;
-  height: 100px;
+  height: 80px;
 `;
 const AnswerList = function ({aList}) {
   const [answerList, setAnswerList] = React.useState([]);
