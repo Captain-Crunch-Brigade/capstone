@@ -115,7 +115,7 @@ const Card = function Card({ id, isOutfit, setOutfit }) {
 };
 
 Card.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.any,
   isOutfit: PropTypes.bool,
   setOutfit: PropTypes.func,
 };
