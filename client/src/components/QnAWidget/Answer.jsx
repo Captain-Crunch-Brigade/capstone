@@ -32,10 +32,11 @@ const Answer = function ({ answer }) {
       <div>
         A:
         {answer.body}
+        <button type="button" onClick={(e) => { helphandler()}}>helpfull { helpfull ? answer.helpfulness + 1 : answer.helpfulness}</button>
+        <button type="button" onClick={(e) => { reporthandler()}}>{reported ? 'reported' : 'report'}</button>
       </div>
       <div>by {answer.answerer_name} at {answer.date}</div>
-      <button type="button" onClick={(e) => { helphandler()}}>helpfull { helpfull ? answer.helpfulness + 1 : answer.helpfulness}</button>
-      <button type="button" onClick={(e) => { reporthandler()}}>{reported ? 'reported' : 'report'}</button>
+
     </div>
   );
 };
