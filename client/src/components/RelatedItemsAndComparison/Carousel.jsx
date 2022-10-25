@@ -21,6 +21,7 @@ const CarouselDiv = styled.div`
   display: flex;
   flex-direction: row;
   transition: all 250ms linear;
+  background-color: #f2f2f2;
   overflow-x: auto;
   scroll-behavior: smooth;
   &::-webkit-scrollbar {
