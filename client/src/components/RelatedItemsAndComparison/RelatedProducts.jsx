@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Carousel from './Carousel';
+
+const Wrapper = styled.div`
+  margin: 40px 0 0 0;
+`;
+
+const Word = styled.p`
+  margin-left: 11%;
+`;
 
 const RelatedProducts = function RelatedItems() {
   const { id } = useParams();
@@ -22,10 +31,12 @@ const RelatedProducts = function RelatedItems() {
   }, []);
 
   return (
-    <div>
-      RELATED PRODUCTS
+    <Wrapper>
+      <Word>
+        RELATED PRODUCTS
+      </Word>
       <Carousel relatedItems={data} />
-    </div>
+    </Wrapper>
   );
 };
 
