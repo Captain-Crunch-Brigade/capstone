@@ -9,16 +9,17 @@ import Stars from '../Stars';
 import CloseBtn from '../../assets/images/CloseBtn';
 
 const Wrapper = styled.div`
-  width: 300px;
+  min-width: 20%;
+  max-width: 20%;
   height: 400px;
   border: 1px solid grey;
-  margin: 10px 20px 10px 10px;
+  margin: 10px 10px 10px 10px;
   background-color: #f0f0f5;
   position: relative;
 `;
 
 const Image = styled.img`
-  width: 300px;
+  width: 100%;
   height: 300px;
   vertical-align: middle;
   border-bottom: 1px solid grey;
