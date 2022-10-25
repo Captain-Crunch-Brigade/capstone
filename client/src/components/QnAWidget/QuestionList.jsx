@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Question from './Question';
 import MoreQuestions from './MoreQuestions';
+import styled from 'styled-components';
 
+const Scrollarea = styled.div`
+  overflow-y: auto;
+  hight: 200px;
+`;
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
   const [listLength, setListLength] = React.useState(2)
@@ -34,9 +39,11 @@ const QuestionList = function ({ list, search }) {
   }, [list, search, listLength]);
   return (
     <div>
+      <Scrollarea>
       {renderList.map((item) => (
         <Question question={item} />
       ))}
+      </Scrollarea>
       <MoreQuestions qList={list} count={listLength} setCount={setListLength}/>
     </div>
   )
