@@ -33,8 +33,10 @@ const ModalWrapper = styled.div`
 
 const TableDiv = styled.div`
   width: fit-content;
+  overflow-x: auto;
   overflow-y: scroll;
   margin: auto;
+
   & > table {
     border-spacing: 70px 20px;
   }
@@ -43,6 +45,13 @@ const TableDiv = styled.div`
     text-align: center;
   }
 
+  & > table > tbody > tr:hover {
+    background-color: #eeeee4;
+  }
+
+  & > table > tbody > tr > td:nth-child(2) {
+    font-weight: bold;
+  }
 `;
 // TODO: give margin on text in modal
 const ModalHeader = styled.h3`
