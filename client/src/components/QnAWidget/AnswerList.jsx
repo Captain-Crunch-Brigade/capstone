@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import Answer from './Answer';
 import MoreAnswers from './MoreAnswers'
 
+const Scrollarea = styled.div`
+  overflow-y: scroll;
+  max-height: 80px;
+`;
 const AnswerList = function ({aList}) {
   const [answerList, setAnswerList] = React.useState([]);
   const [listCount, setListCount] = React.useState(2)
@@ -24,9 +29,11 @@ const AnswerList = function ({aList}) {
   }, [aList, listCount]);
   return (
     <div>
+      <Scrollarea>
       {answerList.map((item) => (
         <Answer answer={item} />
       ))}
+      </Scrollarea>
       <MoreAnswers aList={aList} count={listCount} setCount={setListCount} />
     </div>
   );
