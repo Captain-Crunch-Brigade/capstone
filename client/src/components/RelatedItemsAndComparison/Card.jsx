@@ -101,7 +101,7 @@ const Card = function Card({ id, isOutfit, setOutfit }) {
   };
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="card">
       <Image onClick={navigateToProductId} src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
       {isOutfit
         ? <Cross><CloseBtn onClick={removeOutfit}>X</CloseBtn></Cross>

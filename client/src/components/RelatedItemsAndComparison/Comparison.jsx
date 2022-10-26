@@ -92,7 +92,7 @@ const Comparison = function Comparison({ setModalOpen, data }) {
   if (loading) {
     return (
       <Background onClick={modalClose}>
-        <ModalWrapper>
+        <ModalWrapper data-testid="comparison">
           <ModalHeader>Loading...</ModalHeader>
         </ModalWrapper>
       </Background>
@@ -101,7 +101,7 @@ const Comparison = function Comparison({ setModalOpen, data }) {
 
   return (
     <Background onClick={modalClose}>
-      <ModalWrapper>
+      <ModalWrapper data-testid="comparison">
         <TableDiv>
           <ModalHeader>COMPARING</ModalHeader>
           <table>
