@@ -3,17 +3,17 @@ import Thumbnails from './Thumbnails'
 import s from './style.css';
 import axios from 'axios'
 
-const ImageGallery = ({ styleInfo }) => {
-  console.log(styleInfo)
+const ImageGallery = ({ gallery }) => {
+
   const bgImg = {
-    backgroundImage: `url(${styleInfo[0]?.photos[0].url})`,
+    backgroundImage: `url(${gallery[0]?.photos[0].thumbnail_url})`,
     backgroundSize: '100% 100%'
   }
   return (
     <div id={s.gallery} style={bgImg}>
       <div id={s.thumbnails}>
         {
-          styleInfo.map(item => <Thumbnails key={item.style_id} item={item} />)
+          gallery.map(item => <Thumbnails key={item.style_id} item={item} />)
         }
 
       </div>

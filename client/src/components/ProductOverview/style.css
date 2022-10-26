@@ -26,6 +26,11 @@
   border: none;
 }
 
+#message {
+  color: red;
+  text-align: center;
+}
+
 #gallery {
   width: 60vw;
   height: 60vw;
@@ -46,16 +51,101 @@
   margin: 0;
 }
 
+#info h4 {
+  margin: 0;
+}
+
 #info p {
   margin: 10px 0 0 0;
 }
 
 #thumbnails {
   margin: 10px;
-  height: 40vw;
+  /* height: 40vw; */
 }
 
 #thumbnails img {
   display: block;
   margin-bottom: 5px;
+}
+
+.thumbs:hover {
+  cursor: pointer;
+}
+
+#stars {
+  background-color: #aaa;
+  margin: 0 10px 10px 0;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.sale {
+  color: red;
+}
+
+#socialMedia {
+  margin-top: 20px;
+}
+
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 15px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa_facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa_twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+/* Pinterest */
+.fa_pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+#selector {
+  margin: 20px 0;
+  width: fit-content;
+  text-align: center;
+}
+
+#selector img {
+  margin: 0 10px 10px 0;
+  border-radius: 50%;
+}
+
+#cart select {
+  padding: 10px;
+}
+
+#size {
+  width: 50%;
+  margin-right: 20px;
+}
+
+#qty {
+  width: 40%;
 }

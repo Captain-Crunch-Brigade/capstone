@@ -1,17 +1,38 @@
 import React from 'react';
+import Stars from '../Stars';
 import s from './style.css';
 
 const ProductInfo = ({ productInfo }) => {
   return (
     <div id={s.info}>
-      <p>
-        <span>&#9733;&#9733;&#9733;&#9733;&#9733; </span>
+      {
+        productInfo.ratings ?
+        <>
+        <Stars id={s.stars} ratings={productInfo.ratings} />
         <a href="#"><small>Read all reviews</small></a>
-      </p>
-      <p>{productInfo.category}</p>
+        </>
+      :
+      null
+    }
+
+      <h4>Caregory: {productInfo.category}</h4>
       <h2>{productInfo.name}</h2>
-      <p>${productInfo.price}</p>
-    </div>
+      {
+        productInfo.sale_price ?
+        <>
+        <p className={s.strike}>${productInfo.price}</p>
+            <p className={s.sale}>${productInfo.sale_price}</p>
+        </>
+        :
+        <p>${productInfo.price}</p>
+
+      }
+      <div id={s.socialMedia}>
+        <a href="#" className={`fa fa-facebook ${s.fa} ${s.fa_facebook}`}></a>
+        <a href="#" className={`fa fa-twitter ${s.fa} ${s.fa_twitter}`}></a>
+        <a href="#" className={`fa fa-pinterest ${s.fa} ${s.fa_pinterest}`}></a>
+      </div>
+    </div >
   )
 }
 
