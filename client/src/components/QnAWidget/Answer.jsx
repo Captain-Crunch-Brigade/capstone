@@ -16,10 +16,18 @@ const Secondline = styled.div`
   padding-left: 20px;
 `;
 const HelpfulQ = styled.div`
-  padding-left: 30px;
+border-left: 1px solid black;
+padding-left: 15px;
 `;
 const ReportLink = styled.a`
-  padding-left: 30px;
+padding-left: 15px;
+`;
+const HelpLink = styled.a`
+border-right: 1px solid black;
+padding-right: 15px;
+`;
+const AnswerPad = styled.div`
+padding-right: 15px;
 `;
 const Answer = function ({ answer }) {
   const [helpfull, setHelpfull] = React.useState(false);
@@ -54,10 +62,12 @@ const Answer = function ({ answer }) {
 
       <div>
         <Firstline>
-        <Abox>A:</Abox>
-          {answer.body}
+          <Abox>A:</Abox>
+          <AnswerPad>
+            {answer.body}
+          </AnswerPad>
           <HelpfulQ>Helpful?</HelpfulQ>
-          <a href="#" onClick={(e) => { helphandler(e)}}>Yes ({ helpfull ? answer.helpfulness + 1 : answer.helpfulness})</a>
+          <HelpLink href="#" onClick={(e) => { helphandler(e)}}>Yes ({ helpfull ? answer.helpfulness + 1 : answer.helpfulness})</HelpLink>
           <ReportLink href="#" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</ReportLink>
         </Firstline>
       </div>

@@ -6,6 +6,7 @@ import MoreAnswers from './MoreAnswers'
 const Scrollarea = styled.div`
   overflow-y: scroll;
   max-height: 80px;
+  min-width: 50%;
 `;
 const AnswerList = function ({aList}) {
   const [answerList, setAnswerList] = React.useState([]);

@@ -18,10 +18,18 @@ const Secondline = styled.div`
   padding-left: 20px;
 `;
 const HelpfulQ = styled.div`
-  padding-left: 30px;
+  border-left: 1px solid black;
+  padding-left: 15px;
 `;
 const ReportLink = styled.a`
-  padding-left: 30px;
+  padding-left: 15px;
+`;
+const HelpLink = styled.a`
+  border-right: 1px solid black;
+  padding-right: 15px;
+`;
+const QuestionPad = styled.div`
+  padding-right: 15px;
 `;
 
 const Question = function ({question}) {
@@ -31,7 +39,8 @@ const Question = function ({question}) {
   const clickHandler = () => {
     setIsClicked(true);
   }
-  const helphandler = () => {
+  const helphandler = (e) => {
+    e.preventDefault();
     if (!helpfull) {
       setHelpfull(!helpfull);
       axios.put('/api/qa/questions/helpful', { id: question.question_id })
@@ -42,7 +51,8 @@ const Question = function ({question}) {
         });
     }
   }
-  const reporthandler = () => {
+  const reporthandler = (e) => {
+    e.preventDefault();
     if (!reported) {
       setReported(!reported);
       axios.put('/api/qa/questions/report', { id: question.question_id })
@@ -60,12 +70,14 @@ const Question = function ({question}) {
       <div>
         <Firstline>
           <Qbox>Q:</Qbox>
-          {question.question_body}
+          <QuestionPad>
+            {question.question_body}
+          </QuestionPad>
           <HelpfulQ>Helpful?</HelpfulQ>
-          <a href="#" onClick={(e) => { helphandler(e)}}>
+          <HelpLink href="#" onClick={(e) => { helphandler(e)}}>
             Yes
             ({helpfull ? question.question_helpfulness + 1 : question.question_helpfulness })
-          </a>
+          </HelpLink>
           <ReportLink href="#" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</ReportLink>
         </Firstline>
         </div>

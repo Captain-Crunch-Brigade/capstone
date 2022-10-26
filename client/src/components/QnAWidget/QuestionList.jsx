@@ -7,6 +7,7 @@ import MoreQuestions from './MoreQuestions';
 const Scrollarea = styled.div`
   overflow-y: scroll;
   max-height: 400px;
+  width: 50%;
 `;
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
