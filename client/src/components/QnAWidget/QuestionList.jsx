@@ -41,21 +41,12 @@ const QuestionList = function ({ list, search }) {
   return (
     <div>
       <Scrollarea>
-      {renderList.map((item) => (
-        <Question question={item} />
-      ))}
+        {renderList.map((item) => (
+          <Question question={item} />
+        ))}
       </Scrollarea>
       <MoreQuestions qList={list} count={listLength} setCount={setListLength}/>
     </div>
   )
 };
-
-// QuestionList.propTypes = {
-//   list: PropTypes.Array,
-//   search: PropTypes.String,
-// };
-// QuestionList.defaultProps = {
-//   list : [],
-//   search: '',
-// };
 export default QuestionList;

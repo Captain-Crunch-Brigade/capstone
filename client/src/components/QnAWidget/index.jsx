@@ -22,7 +22,7 @@ const QnAWidget = function () {
 
   }, [search]);
   return (
-    <div>
+    <div data-testid='QnAWidget'>
       <TopBar setSearch={setSearch}/>
       <QuestionList list={QList} search={search}/>
       <BottomBar productid={id}/>
