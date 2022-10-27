@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import Header from './Header';
 import ImageGallery from './ImageGallery';
 import ProductInfo from './ProductInfo';
@@ -6,18 +8,17 @@ import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
 import s from './style.css';
-import axios from 'axios';
 
-const ProductOverview = () => {
+const ProductOverview = function ProductOverview() {
   const [data, setData] = useState([]);
   const [productInfo, setProductInfo] = useState({});
-  const id = Math.floor((Math.random() * 1011) + 65631);
+  const { id } = useParams();
 
   useEffect(() => {
     axios.get(`/api/styles/${id}`)
-    .then(results => {
+      .then((results) => {
         setData(
-          results.data[2].results
+          results.data[2].results,
         );
         setProductInfo({
           name: results.data[0].name,
@@ -27,7 +28,7 @@ const ProductOverview = () => {
           ratings: getStarsByQuarter(getAverageStars(results.data[1]), 10)
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -38,7 +39,7 @@ const ProductOverview = () => {
         <div className={s.aside}>
           <ProductInfo productInfo={productInfo} />
           <StyleSelector selector={data} />
-          <AddToCart cart={data}/>
+          <AddToCart cart={data} />
         </div>
       </div>
     </>
