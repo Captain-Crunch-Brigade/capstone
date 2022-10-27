@@ -22,7 +22,7 @@ describe('Answer component', () => {
       date: "2022-09-09T00:00:00.000Z",
       helpfulness: 3,
     }
-    render(<Router><Answer answer={ansObj} /></Router>);
+    render(<Answer answer={ansObj} />);
     const answer = screen.getByTestId('answer');
     expect(answer).toBeInTheDocument();
     cleanup();
