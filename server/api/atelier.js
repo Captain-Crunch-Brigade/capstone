@@ -1,9 +1,7 @@
 const dotenv = require('dotenv');
 const axios = require('axios');
 
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
+dotenv.config();
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/rfp';
 const authHeader = {

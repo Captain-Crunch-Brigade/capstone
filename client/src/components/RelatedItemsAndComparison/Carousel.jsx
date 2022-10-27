@@ -97,7 +97,9 @@ const Carousel = function Carousel({
           ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
           : outfit && outfit.map
           && outfit.map((item) => <Card id={(item)} key={item} isOutfit setOutfit={setOutfit} />)}
-        {isOutfit ? <EmptyCard outfit={outfit} setOutfit={setOutfit} /> : null}
+        {isOutfit && outfit.length !== 0
+          ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
+          : null}
       </CarouselDiv>
       {currentSlide < totalSlides
         ? <RightButton data-testid="nextButton" onClick={handleNext}>&raquo;</RightButton>

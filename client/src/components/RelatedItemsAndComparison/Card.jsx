@@ -104,7 +104,7 @@ const Card = function Card({ id, isOutfit, setOutfit }) {
     <Wrapper data-testid="card">
       <Image onClick={navigateToProductId} src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
       {isOutfit
-        ? <Cross><CloseBtn onClick={removeOutfit}>X</CloseBtn></Cross>
+        ? <Cross onClick={removeOutfit}><CloseBtn>X</CloseBtn></Cross>
         : <Star onClick={showModal}>☆</Star>}
       {modalOpen && <Comparison setModalOpen={setModalOpen} data={data} compareId={id} />}
       <Category>{data.category}</Category>
