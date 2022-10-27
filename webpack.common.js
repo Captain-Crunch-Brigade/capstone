@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const sass = require('sass');
 
 const isProduction = process.env.NODE_ENV === 'PRODUCTION';
 
@@ -29,7 +30,12 @@ module.exports = {
               modules: true,
             },
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sass,
+            },
+          },
         ],
       },
       {
