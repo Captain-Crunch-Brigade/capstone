@@ -82,6 +82,7 @@ const Comparison = function Comparison({ setModalOpen, data }) {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
