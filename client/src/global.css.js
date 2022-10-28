@@ -10,4 +10,8 @@ export default createGlobalStyle`
   h1, h2, h3, h4 {
     font-family: 'Archivo', sans-serif;
   }
+
+  th {
+    font-family: 'Archivo', sans-serif;
+  }
 `;
