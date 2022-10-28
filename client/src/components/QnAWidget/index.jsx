@@ -1,9 +1,14 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import TopBar from './TopBar';
 import QuestionList from './QuestionList';
 import BottomBar from './BottomBar';
+
+const Wrapper = styled.div`
+  margin-left: 11%;
+`;
 
 const QnAWidget = function () {
   const { id } = useParams();
@@ -22,11 +27,11 @@ const QnAWidget = function () {
 
   }, [search]);
   return (
-    <div data-testid='QnAWidget'>
-      <TopBar setSearch={setSearch}/>
-      <QuestionList list={QList} search={search}/>
-      <BottomBar productid={id}/>
-    </div>
+    <Wrapper data-testid="QnAWidget">
+      <TopBar setSearch={setSearch} />
+      <QuestionList list={QList} search={search} />
+      <BottomBar productid={id} />
+    </Wrapper>
   );
 };
 
