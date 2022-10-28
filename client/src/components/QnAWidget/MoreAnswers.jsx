@@ -1,4 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Btn = styled.button`
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  font-family: 'Karla', sans-serif;
+  text-decoration: underline;
+  text-decoration-color: black;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const MoreAnswers = function ({aList, count, setCount}) {
   const clickhandler = (event) => {
@@ -15,8 +29,8 @@ const MoreAnswers = function ({aList, count, setCount}) {
   }
   return (
     <div>
-      {listArr.length > count && <button type="button" onClick={(event) => { clickhandler(event); }}>More Answers</button>}
-      {listArr.length < count && count > 2 && <button type="button" onClick={(event) => { clickCloser(event); }}>Collapse Answers</button>}
+      {listArr.length > count && <Btn type="button" onClick={(event) => { clickhandler(event); }}>More Answers</Btn>}
+      {listArr.length < count && count > 2 && <Btn type="button" onClick={(event) => { clickCloser(event); }}>Collapse Answers</Btn>}
     </div>
   );
 }

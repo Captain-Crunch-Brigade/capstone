@@ -3,9 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const Abox = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
   width: 20px;
+  height: 18px;
 `;
 const Firstline = styled.div`
   display: flex;
@@ -16,19 +15,27 @@ const Secondline = styled.div`
   padding-left: 20px;
 `;
 const HelpfulQ = styled.div`
-border-left: 1px solid black;
-padding-left: 15px;
+  border-left: 1px solid black;
+  padding-left: 15px;
+  margin-right: 10px;
 `;
 const ReportLink = styled.a`
-padding-left: 15px;
+  padding-left: 15px;
+  height: 18px;
+  color: black;
+  text-decoration-color: black;
 `;
 const HelpLink = styled.a`
-border-right: 1px solid black;
-padding-right: 15px;
+  border-right: 1px solid black;
+  padding-right: 15px;
+  color: black;
+  text-decoration-color: black;
 `;
 const AnswerPad = styled.div`
-padding-right: 15px;
+  padding-right: 15px;
+  height: 18px;
 `;
+
 const Answer = function ({ answer }) {
   const [helpfull, setHelpfull] = React.useState(false);
   const [reported, setReported] = React.useState(false);
@@ -59,10 +66,9 @@ const Answer = function ({ answer }) {
 
   return (
     <div  data-testid='answer'>
-
       <div>
         <Firstline>
-          <Abox>A:</Abox>
+          <Abox><h5 style={{ margin: 0 }}>A:</h5></Abox>
           <AnswerPad>
             {answer.body}
           </AnswerPad>

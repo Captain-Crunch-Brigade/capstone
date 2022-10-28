@@ -1,20 +1,37 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Input = styled.input`
+  width: 85%;
+  height: 30px;
+`;
+
+const Search = styled.input`
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+`;
+
 const TopBar = function(props) {
   const [form, setForm] = React.useState('');
   const submithandler = (event) => {
     event.preventDefault();
     props.setSearch(form);
     setForm('');
-  }
+  };
 
   return (
-   <div>
-    <h4>Questions and Answers</h4>
+   <Wrapper>
+    <h3>Questions and Answers</h3>
     <form onSubmit={submithandler}>
-        <input type='text' id='search'onChange={(e) => (setForm(e.target.value))} value={form}></input>
-        <input  type='submit' value='Search'/>
+        <Input type='text' id='search'onChange={(e) => (setForm(e.target.value))} value={form}></Input>
+        <Search  type='submit' value='🔍'/>
     </form>
-   </div>
+   </Wrapper>
   );
  };
  export default TopBar;
