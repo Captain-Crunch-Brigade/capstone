@@ -12,6 +12,7 @@ import s from './style.css';
 
 const ProductOverview = function ProductOverview() {
   const [data, setData] = useState([]);
+  const [styleId, setStyleId] = useState();
   const [productInfo, setProductInfo] = useState({});
   const { id } = useParams();
 
@@ -34,14 +35,18 @@ const ProductOverview = function ProductOverview() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleClick = (id) => {
+    setStyleId(id);
+  }
+
   return (
     <>
       <Header />
       <div className={s.main}>
-        <ImageGallery gallery={data} />
+        <ImageGallery gallery={data} styleId={styleId} styleClick={handleClick} />
         <div className={s.aside}>
           <ProductInfo productInfo={productInfo} />
-          <StyleSelector selector={data} />
+          <StyleSelector selector={data} styleId={styleId} styleClick={handleClick} />
           <AddToCart cart={data} />
         </div>
       </div>
