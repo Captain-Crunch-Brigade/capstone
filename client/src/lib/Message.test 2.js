@@ -2,7 +2,7 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import Message from "../Components/ProductOverview/Message.jsx";
+import Message from "../ProductOverview/Message";
 
 let container = null;
 beforeEach(() => {
