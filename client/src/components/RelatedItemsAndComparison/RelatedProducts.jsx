@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   margin: 40px 0 0 0;
 `;
 
-const Word = styled.p`
+const Word = styled.h4`
   margin-left: 11%;
 `;
 
@@ -28,6 +28,7 @@ const RelatedProducts = function RelatedItems() {
           related_items: results.data,
         }));
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

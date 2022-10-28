@@ -15,7 +15,7 @@ const ProductInfo = ({ productInfo }) => {
       null
     }
 
-      <h4>Caregory: {productInfo.category}</h4>
+      <h4>Category: {productInfo.category}</h4>
       <h2>{productInfo.name}</h2>
       {
         productInfo.sale_price ?

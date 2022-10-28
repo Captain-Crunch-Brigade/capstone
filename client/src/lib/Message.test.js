@@ -1,16 +1,8 @@
-/**
- * @jest-environment jsdom
- */
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
-import { cleanup } from '@testing-library/react';
 
-<<<<<<< HEAD:client/src/lib/Message.test.js
-import Message from "../Components/ProductOverview/Message.jsx";
-=======
-import Message from "../src/components/ProductOverview/Message";
->>>>>>> main:client/tests/Message.test.js
+import Message from "../ProductOverview/Message";
 
 let container = null;
 beforeEach(() => {
@@ -24,7 +16,6 @@ afterEach(() => {
   unmountComponentAtNode(container);
   container.remove();
   container = null;
-  cleanup();
 });
 
 it("renders message", () => {

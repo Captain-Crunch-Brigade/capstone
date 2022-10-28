@@ -27,16 +27,18 @@ const Image = styled.img`
 `;
 
 const Category = styled.div`
-  font-size: 12px;
+  font-size: 14px;
+  font-family: 'Archivo', sans-serif;
 `;
 
 const Name = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
+  font-family: 'Archivo', sans-serif;
 `;
 
 const Price = styled.div`
-  font-size: 10px;
+  font-size: 14px;
 `;
 
 const Star = styled.div`
