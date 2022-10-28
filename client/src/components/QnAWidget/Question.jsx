@@ -5,9 +5,8 @@ import AnswerList from './AnswerList';
 import AnswerForm from './AnswerForm'
 
 const Qbox = styled.div`
-  border: 1px solid black;
-  border-radius: 5px;
   width: 20px;
+  height: 18px;
 `;
 const Firstline = styled.div`
   display: flex;
@@ -20,16 +19,36 @@ const Secondline = styled.div`
 const HelpfulQ = styled.div`
   border-left: 1px solid black;
   padding-left: 15px;
+  margin-right: 10px;
 `;
 const ReportLink = styled.a`
   padding-left: 15px;
+  height: 18px;
+  color: black;
+  text-decoration-color: black;
 `;
 const HelpLink = styled.a`
   border-right: 1px solid black;
   padding-right: 15px;
+  color: black;
+  text-decoration-color: black;
 `;
 const QuestionPad = styled.div`
   padding-right: 15px;
+  height: 18px;
+`;
+
+const Btn = styled.button`
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  font-family: 'Karla', sans-serif;
+  text-decoration: underline;
+  text-decoration-color: black;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Question = function ({question}) {
@@ -69,9 +88,9 @@ const Question = function ({question}) {
     <div>
       <div>
         <Firstline>
-          <Qbox>Q:</Qbox>
+          <Qbox><h4 style={{ margin: 0 }}>Q:</h4></Qbox>
           <QuestionPad>
-            {question.question_body}
+            <h4 style={{ margin: 0 }}>{question.question_body}</h4>
           </QuestionPad>
           <HelpfulQ>Helpful?</HelpfulQ>
           <HelpLink href="#" onClick={(e) => { helphandler(e)}}>
@@ -80,10 +99,10 @@ const Question = function ({question}) {
           </HelpLink>
           <ReportLink href="#" onClick={(e) => { reporthandler(e)}}>{reported ? 'reported' : 'report'}</ReportLink>
         </Firstline>
-        </div>
+      </div>
       <Secondline>
         <div> by {question.asker_name} at {question.question_date}</div>
-        <button type="button" onClick={(event) => { clickHandler(event); }}>add Answer</button>
+        <Btn type="button" onClick={(event) => { clickHandler(event); }}>add Answer</Btn>
         <AnswerList aList={question.answers}/>
         {isClicked && <AnswerForm id={question.question_id} setIsClicked={setIsClicked} />}
       </Secondline>
