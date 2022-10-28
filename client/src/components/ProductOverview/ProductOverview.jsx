@@ -6,6 +6,7 @@ import ImageGallery from './ImageGallery';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
+import Description from './Description';
 import { getAverageStars, getStarsByQuarter } from '../../lib/starRatings';
 import s from './style.css';
 
@@ -22,6 +23,8 @@ const ProductOverview = function ProductOverview() {
         );
         setProductInfo({
           name: results.data[0].name,
+          slogan: results.data[0].slogan,
+          description: results.data[0].description,
           category: results.data[0].category,
           price: results.data[2].results[0].original_price,
           sale_price: results.data[2].results[0].sale_price,
@@ -42,6 +45,7 @@ const ProductOverview = function ProductOverview() {
           <AddToCart cart={data} />
         </div>
       </div>
+      <Description desc={productInfo} />
     </>
   );
 };
