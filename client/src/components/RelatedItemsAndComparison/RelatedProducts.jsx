@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   margin: 40px 0 0 0;
 `;
 
-const Word = styled.h4`
+const Word = styled.h3`
   margin-left: 11%;
 `;
 
