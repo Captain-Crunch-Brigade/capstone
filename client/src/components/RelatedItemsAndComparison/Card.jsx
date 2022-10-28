@@ -9,16 +9,17 @@ import Stars from '../Stars';
 import CloseBtn from '../../assets/images/CloseBtn';
 
 const Wrapper = styled.div`
-  width: 300px;
+  min-width: 20%;
+  max-width: 20%;
   height: 400px;
   border: 1px solid grey;
-  margin: 10px 20px 10px 10px;
+  margin: 10px 10px 10px 10px;
   background-color: #f0f0f5;
   position: relative;
 `;
 
 const Image = styled.img`
-  width: 300px;
+  width: 100%;
   height: 300px;
   vertical-align: middle;
   border-bottom: 1px solid grey;
@@ -100,10 +101,10 @@ const Card = function Card({ id, isOutfit, setOutfit }) {
   };
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="card">
       <Image onClick={navigateToProductId} src={data.thumbnails[0]?.photos[0]?.thumbnail_url} />
       {isOutfit
-        ? <Cross><CloseBtn onClick={removeOutfit}>X</CloseBtn></Cross>
+        ? <Cross onClick={removeOutfit}><CloseBtn>X</CloseBtn></Cross>
         : <Star onClick={showModal}>☆</Star>}
       {modalOpen && <Comparison setModalOpen={setModalOpen} data={data} compareId={id} />}
       <Category>{data.category}</Category>
@@ -115,7 +116,7 @@ const Card = function Card({ id, isOutfit, setOutfit }) {
 };
 
 Card.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.any,
   isOutfit: PropTypes.bool,
   setOutfit: PropTypes.func,
 };

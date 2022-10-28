@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
-  width: 300px;
+  min-width: 20%;
+  max-width: 20%;
   height: 400px;
   border: 1px solid grey;
   margin: 10px 20px 10px 10px;
@@ -35,7 +36,7 @@ const EmptyCard = function EmptyCard({ outfit, setOutfit }) {
   };
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="emptyCard">
       <Plus onClick={handleClick}>
         +
       </Plus>

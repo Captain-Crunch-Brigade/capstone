@@ -40,7 +40,6 @@ const Button = styled.button`
   color: grey;
   line-height: 424px;
   font-weight: bold;
-  cursor: pointer;
   font-size: 20px;
   background-color: transparent;
   border-color: transparent;
@@ -48,10 +47,12 @@ const Button = styled.button`
 
 const LeftButton = styled(Button)`
   left: 0;
+  cursor: pointer;
 `;
 
 const RightButton = styled(Button)`
   right: 0;
+  cursor: pointer;
 `;
 
 const Carousel = function Carousel({
@@ -71,7 +72,7 @@ const Carousel = function Carousel({
     const newIndex = isFirstSlide ? 0 : currentSlide - 1;
     setCurrentSlide(newIndex);
     if (!isFirstSlide) {
-      slideRef.current.scrollLeft -= slideRef.current.offsetWidth / 4;
+      slideRef.current.scrollLeft -= (slideRef.current.offsetWidth / 5 + 20);
     }
   };
 
@@ -80,13 +81,13 @@ const Carousel = function Carousel({
     const newIndex = isLastSlide ? totalSlides : currentSlide + 1;
     setCurrentSlide(newIndex);
     if (!isLastSlide) {
-      slideRef.current.scrollLeft += slideRef.current.offsetWidth / 4;
+      slideRef.current.scrollLeft += (slideRef.current.offsetWidth / 5 + 20);
     }
   };
 
   return (
     <Container data-testid="carousel">
-      {currentSlide > 0 && <LeftButton data-testid="prevButton" onClick={handlePrev}>&laquo;</LeftButton>}
+      {currentSlide > 0 ? <LeftButton data-testid="prevButton" onClick={handlePrev}>&laquo;</LeftButton> : <Button />}
       <CarouselDiv ref={slideRef}>
         {relatedItems?.related_items
           ? relatedItems.related_items
@@ -96,10 +97,13 @@ const Carousel = function Carousel({
           ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
           : outfit && outfit.map
           && outfit.map((item) => <Card id={(item)} key={item} isOutfit setOutfit={setOutfit} />)}
-        {isOutfit ? <EmptyCard outfit={outfit} setOutfit={setOutfit} /> : null}
+        {isOutfit && outfit.length !== 0
+          ? <EmptyCard outfit={outfit} setOutfit={setOutfit} />
+          : null}
       </CarouselDiv>
       {currentSlide < totalSlides
-      && <RightButton data-testid="nextButton" onClick={handleNext}>&raquo;</RightButton>}
+        ? <RightButton data-testid="nextButton" onClick={handleNext}>&raquo;</RightButton>
+        : <Button />}
     </Container>
   );
 };

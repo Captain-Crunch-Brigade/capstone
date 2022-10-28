@@ -7,10 +7,11 @@ import MoreQuestions from './MoreQuestions';
 const Scrollarea = styled.div`
   overflow-y: scroll;
   max-height: 400px;
+  width: 50%;
 `;
 const QuestionList = function ({ list, search }) {
   const [renderList, setRenderList] = React.useState([]);
-  const [listLength, setListLength] = React.useState(2)
+  const [listLength, setListLength] = React.useState(4)
   React.useEffect(() => {
     if (list.length > listLength) {
       let i = 0;
@@ -40,21 +41,12 @@ const QuestionList = function ({ list, search }) {
   return (
     <div>
       <Scrollarea>
-      {renderList.map((item) => (
-        <Question question={item} />
-      ))}
+        {renderList.map((item) => (
+          <Question question={item} />
+        ))}
       </Scrollarea>
       <MoreQuestions qList={list} count={listLength} setCount={setListLength}/>
     </div>
   )
 };
-
-// QuestionList.propTypes = {
-//   list: PropTypes.Array,
-//   search: PropTypes.String,
-// };
-// QuestionList.defaultProps = {
-//   list : [],
-//   search: '',
-// };
 export default QuestionList;
