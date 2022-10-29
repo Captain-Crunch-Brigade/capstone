@@ -20,7 +20,7 @@ const QnAWidget = function () {
         setQlist(data.data.results);
       })
       .catch((err) => {
-        console.log('error in qna axios call: ', err);
+        console.error(err.message);
       })
   }, []);
   useEffect(() => {

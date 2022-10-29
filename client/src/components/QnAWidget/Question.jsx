@@ -61,7 +61,7 @@ const Question = function ({question}) {
   const helphandler = (e) => {
     e.preventDefault();
     if (!helpfull) {
-      setHelpfull(!helpfull);
+      setHelpfull((previousState) => !previousState);
       axios.put('/api/qa/questions/helpful', { id: question.question_id })
         .then((results) => {
         })
@@ -73,7 +73,7 @@ const Question = function ({question}) {
   const reporthandler = (e) => {
     e.preventDefault();
     if (!reported) {
-      setReported(!reported);
+      setReported((previousState) => !previousState);
       axios.put('/api/qa/questions/report', { id: question.question_id })
         .then((results) => {
         })

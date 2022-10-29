@@ -61,7 +61,7 @@ const AnswerForm = function ({id, setIsClicked}) {
       })
       .catch((err) => {
         setIsClicked(false);
-        console.log('error in qna axios call: ', err);
+        console.error(err.message);
       })
 
   }
@@ -75,19 +75,18 @@ const AnswerForm = function ({id, setIsClicked}) {
         <Subtitle>
           About the product
         </Subtitle>
-      <form onSubmit={submithandler}>
-        <TextArea type="text" id="body" onChange={(e) => (setForm({...form, body: e.target.value}))} value={form.body} placeholder="Why did you like the product or not" />
-        <div></div>
-        <label>NickName:</label>
-        <input type="text" id="name" onChange={(e) => (setForm({...form, name: e.target.value}))} value={form.name} placeholder="Example: jack543!"/>
-        <div>For privacy reasons, do not use your full name or email address</div>
-        <label>Email:</label>
-        <input type="text" id="email" onChange={(e) => (setForm({...form, email: e.target.value}))} value={form.email} placeholder="Example: jack@email.com"/>
-        <input type="submit" value="Submit Answer" />
-      </form>
+        <form onSubmit={submithandler}>
+          <TextArea type="text" id="body" onChange={(e) => (setForm({...form, body: e.target.value}))} value={form.body} placeholder="Why did you like the product or not" />
+          <div></div>
+          <label>NickName:</label>
+          <input type="text" id="name" onChange={(e) => (setForm({...form, name: e.target.value}))} value={form.name} placeholder="Example: jack543!"/>
+          <div>For privacy reasons, do not use your full name or email address</div>
+          <label>Email:</label>
+          <input type="text" id="email" onChange={(e) => (setForm({...form, email: e.target.value}))} value={form.email} placeholder="Example: jack@email.com"/>
+          <input type="submit" value="Submit Answer" />
+        </form>
       </ModalWrapper>
-      <Background onClick={() => {setIsClicked(false)}}>
-    </Background>
+      <Background onClick={() => {setIsClicked(false)}}/>
     </div>
   );
 };

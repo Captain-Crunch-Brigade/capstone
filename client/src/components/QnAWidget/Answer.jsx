@@ -42,7 +42,7 @@ const Answer = function ({ answer }) {
   const helphandler = (e) => {
     e.preventDefault();
     if (!helpfull) {
-      setHelpfull(!helpfull);
+      setHelpfull((previousState) => !previousState);
       axios.put('/api/qa/answers/helpful', { id: answer.id })
         .then((results) => {
         })
@@ -54,7 +54,7 @@ const Answer = function ({ answer }) {
   const reporthandler = (e) => {
     e.preventDefault();
     if (!reported) {
-      setReported(!reported);
+      setReported((previousState) => !previousState);
       axios.put('/api/qa/answers/report', { id: answer.id })
         .then((results) => {
         })
@@ -78,7 +78,7 @@ const Answer = function ({ answer }) {
         </Firstline>
       </div>
       <Secondline>
-      <div>by {answer.answerer_name} at {answer.date}</div>
+        <div>by {answer.answerer_name} at {answer.date}</div>
       </Secondline>
     </div>
   );
