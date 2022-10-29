@@ -36,8 +36,6 @@ Our application allows the user to click through products and styles to add to t
 * The Overview module is top-most module on the Product Detail page.
 * This component will guide the customer through selecting a specific style and size to add to their cart.
 
-![Related Products](https://github.com/Captain-Crunch-Brigade/capstone/blob/main/screenshots/relatedProducts.png)
-
 2) Related Items & Comparison
 * The Related Items & Comparison module allows viewing and comparison of related item for the product selected.
 * This component extends the ability to select, view, and add to cart other products that are related to a particular product item.
@@ -57,19 +55,18 @@ Our application uses React, Express, Axios, webpack, and babel. To set up and ru
 ```
 npm install
 ```
-2) Run the following command to start the server:
+
+2) Rename the `.env.example` file to `.env` and use GitHub personal access token for API_Key.
+
+3) Run the following command to build directories with a production build of our app.
+```
+npm run build
+```
+
+4) Run the following command to start the server:
 ```
 npm run start
 ```
-3) In a separate terminal, run webpack.
-```
-npm run dev-server
-```
-
-4) Rename the `.env.example` file to `.env` and use GitHub personal access token for API_Key.
-
-5) Open the project in your web browser.
-http://localhost:8080
 
 ---
 ### Acknowledgements
