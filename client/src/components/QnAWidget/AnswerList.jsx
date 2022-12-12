@@ -31,9 +31,9 @@ const AnswerList = function ({aList}) {
   return (
     <div>
       <Scrollarea>
-      {answerList.map((item) => (
-        <Answer answer={item} />
-      ))}
+        {answerList.map((answer) => (
+          <Answer key={answer.id} answer={answer} />
+        ))}
       </Scrollarea>
       <MoreAnswers aList={aList} count={listCount} setCount={setListCount} />
     </div>

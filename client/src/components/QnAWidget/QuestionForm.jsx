@@ -60,14 +60,13 @@ const QuestionForm = function ({productid, setIsClicked}) {
       })
       .catch((err) => {
         setIsClicked(false);
-        console.log('error in qna axios call: ', err);
+        console.error(err.message);
       })
-
   }
   React.useEffect( ()=> {
     setForm({...form, product_id: Number(productid)});
   }, [])
-  return(
+  return (
 
     <div>
       <ModalWrapper>
@@ -84,8 +83,7 @@ const QuestionForm = function ({productid, setIsClicked}) {
           <input type="submit" value="Submit Question" />
         </form>
       </ModalWrapper>
-    <Background onClick={() => {setIsClicked(false)}}>
-    </Background>
+      <Background onClick={() => {setIsClicked(false)}} />
     </div>
   )
 };
