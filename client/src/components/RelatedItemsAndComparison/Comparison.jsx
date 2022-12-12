@@ -56,6 +56,7 @@ const TableDiv = styled.div`
 // TODO: give margin on text in modal
 const ModalHeader = styled.h3`
   text-align: center;
+  transform: translate(-5%, 0);
 `;
 
 const Comparison = function Comparison({ setModalOpen, data }) {
