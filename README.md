@@ -40,7 +40,7 @@ Our application allows the user to click through products and styles to add to t
 * The Related Items & Comparison module allows viewing and comparison of related item for the product selected.
 * This component extends the ability to select, view, and add to cart other products that are related to a particular product item.
 
-![Questions and Answers](https://github.com/Captain-Crunch-Brigade/capstone/blob/main/screenshots/questionsAnswers.png)
+![Questions and Answers](https://github.com/Captain-Crunch-Brigade/capstone/blob/main/screenshots/questionsAnswers.PNG)
 
 3) Questions & Answers
 * The Questions & Answers module allows asking and answering of questions for the product selected.
